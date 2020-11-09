@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
     final databaseReference = FirebaseDatabase.instance.reference();
 
     signInWithGoogle();
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
