@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "412003381077",
+    "firebase_url": "https://mydec-9160b.firebaseio.com",
+    "project_id": "mydec-9160b",
+    "storage_bucket": "mydec-9160b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412003381077:android:5c1ae2d5707adb1f1249dc",
+        "android_client_info": {
+          "package_name": "org.dec4u.mydec.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412003381077-2mvih5firts5ufnde8qh5tiidpjinjcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqcWywnAere4SibawMjPBrKh6Mc-r-GZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412003381077-2mvih5firts5ufnde8qh5tiidpjinjcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
