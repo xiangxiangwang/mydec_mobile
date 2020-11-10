@@ -9,14 +9,40 @@ import 'login_page.dart';
 
 
 void main() {
-  runApp(GoogleAuth());
+  runApp(Dec4U());
+}
+
+class Dec4U extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      // Initialize FlutterFire
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          // we will need to show the error and let the user stay
+          // in the same page
+          return Dec4U();
+        }
+
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          return GoogleAuth();
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return Dec4U();
+      },
+    );
+  }
 }
 
 class GoogleAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Login',
+      title: 'Google Login',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

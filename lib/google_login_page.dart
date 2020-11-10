@@ -19,7 +19,10 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 150),
+              // FlutterLogo(size: 150),
+              Image(image: AssetImage("images/church_logo.png")),
+              //   width: 100.0
+              // );
               SizedBox(height: 50),
               _signInButton(),
             ],
