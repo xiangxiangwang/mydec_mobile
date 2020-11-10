@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'first_screen.dart';
+import 'home/home.dart';
 import 'main.dart';
 
 class GoogleLoginPage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               // FlutterLogo(size: 150),
-              Image(image: AssetImage("images/church_logo.png")),
+              Image(image: AssetImage("assets/church_logo.png")),
               //   width: 100.0
               // );
               SizedBox(height: 50),
@@ -41,7 +41,7 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FirstScreen();
+                  return HomePage();
                 },
               ),
             );

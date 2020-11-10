@@ -4,6 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'common/funs.dart';
+import 'common/loading_page.dart';
 import 'google_login_page.dart';
 import 'login_page.dart';
 
@@ -15,6 +17,7 @@ void main() {
 class Dec4U extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // showLoading(context);
     return FutureBuilder(
       // Initialize FlutterFire
       future: Firebase.initializeApp(),
@@ -23,16 +26,20 @@ class Dec4U extends StatelessWidget {
         if (snapshot.hasError) {
           // we will need to show the error and let the user stay
           // in the same page
-          return Dec4U();
+          print("snapshot.hasError");
+          return GoogleAuth();
         }
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
+          print("snapshot.connectionState == ConnectionState.done");
+          //Navigator.of(context).pop();
           return GoogleAuth();
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Dec4U();
+        print("wait for google auth");
+        return GoogleAuth();
       },
     );
   }
