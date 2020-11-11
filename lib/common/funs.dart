@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-
-
+import 'package:mydec/i10n/localization_intl.dart';
 
 void showLoading(context, [String text]) {
   text = text ?? "Loading...";
@@ -53,3 +51,30 @@ void showLoading(context, [String text]) {
       });
 }
 
+
+Widget buildBottomNavigationBar(BuildContext context) {
+
+  return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.blue,
+            ),
+            label:  DecLocalizations.of(context).home
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_circle,
+              color: Colors.blue,
+            ),
+            label:  'Account'
+        )
+      ],
+      currentIndex: 0,
+      onTap: (int index) {
+        print("tap $index");
+      }
+  );
+
+}

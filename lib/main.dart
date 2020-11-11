@@ -2,11 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
+import 'package:mydec/web_view_page.dart';
 
 import 'common/funs.dart';
 import 'common/loading_page.dart';
 import 'google_login_page.dart';
+import 'home/home.dart';
+import 'i10n/localization_intl.dart';
 import 'login_page.dart';
 
 
@@ -39,7 +44,7 @@ class Dec4U extends StatelessWidget {
 
         // Otherwise, show something whilst waiting for initialization to complete
         print("wait for google auth");
-        return GoogleAuth();
+        return Loading();
       },
     );
   }
@@ -49,11 +54,45 @@ class GoogleAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        // 本地化的代理类
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        // 注册我们的Delegate
+        DecLocalizationsDelegate()
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // 美国英语
+        const Locale('zh', 'CN'), // 中文简体
+        //其它Locales
+      ],
       title: 'Google Login',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GoogleLoginPage(),
+      initialRoute:"/",
+      // home: GoogleLoginPage(),//注册路由表
+      routes:{
+        "/":(context) => GoogleLoginPage(), //注册首页路由
+        "login_page":(context) => GoogleLoginPage(),
+        "home":(context) => HomePage(),
+        "web_view_page":(context) => WebViewPage(),
+        "sunday_service":(context) => SundayServicePage(),
+      },
+    );
+
+  }
+}
+
+class Loading extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Loading',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: LoadingPage(),
     );
   }
 }
