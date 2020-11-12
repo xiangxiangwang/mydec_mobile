@@ -17,6 +17,12 @@
     "placeholders": {}
   },
 
+  "accountDisplay": "个人信息",
+  "@account": {
+    "type": "text",
+    "placeholders": {}
+  },
+
   "language": "语言",
   "@language": {
     "type": "text",

@@ -7,8 +7,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
 import 'package:mydec/web_view_page.dart';
 
+import 'account/routes/account_page.dart';
 import 'common/funs.dart';
 import 'common/loading_page.dart';
+import 'common/routes/language.dart';
 import 'google_login_page.dart';
 import 'home/home.dart';
 import 'i10n/localization_intl.dart';
@@ -78,6 +80,9 @@ class GoogleAuth extends StatelessWidget {
         "home":(context) => HomePage(),
         "web_view_page":(context) => WebViewPage(),
         "sunday_service":(context) => SundayServicePage(),
+        "account":(context) => AccountPage(),
+        "language":(context) => LanguagePage(),
+
       },
     );
 

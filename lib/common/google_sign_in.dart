@@ -5,8 +5,19 @@ import 'package:google_sign_in/google_sign_in.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
+String getCurrentUser() {
+  final User user = _auth.currentUser;
+  final uid = user.uid;
+  // Similarly we can get email as well
+  //final uemail = user.email;
+  print("user's uid: $uid");
+  print("user's display name: ${user.displayName}");
+  //print(uemail);
+  return user.email;
+}
+
 Future<String> signInWithGoogle() async {
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
 
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;

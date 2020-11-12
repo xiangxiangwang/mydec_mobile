@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/funs.dart';
 import 'package:mydec/common/models/menu.dart';
 

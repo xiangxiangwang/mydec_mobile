@@ -16,6 +16,11 @@
     "type": "text",
     "placeholders": {}
   },
+  "accountDisplay": "Account Display",
+  "@accountDisplay": {
+    "type": "text",
+    "placeholders": {}
+  },
   "language": "Language",
   "@language": {
     "type": "text",

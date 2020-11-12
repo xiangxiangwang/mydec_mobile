@@ -24,10 +24,12 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "home" : MessageLookupByLibrary.simpleMessage("Home"),
     "account" : MessageLookupByLibrary.simpleMessage("Me"),
+    "accountDisplay" : MessageLookupByLibrary.simpleMessage("Account Display"),
+    "login" : MessageLookupByLibrary.simpleMessage("Login"),
+    ////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
-    "login" : MessageLookupByLibrary.simpleMessage("Login"),
     "logout" : MessageLookupByLibrary.simpleMessage("logout"),
     "logoutTip" : MessageLookupByLibrary.simpleMessage("Are you sure you want to quit your current account?"),
     "noDescription" : MessageLookupByLibrary.simpleMessage("No description yet !"),

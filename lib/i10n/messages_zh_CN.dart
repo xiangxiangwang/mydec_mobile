@@ -24,11 +24,12 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "home" : MessageLookupByLibrary.simpleMessage("首页"),
     "account" : MessageLookupByLibrary.simpleMessage("我"),
-
+    "accountDisplay" : MessageLookupByLibrary.simpleMessage("个人信息"),
+    "login" : MessageLookupByLibrary.simpleMessage("登录"),
+////////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "cancel" : MessageLookupByLibrary.simpleMessage("取消"),
     "language" : MessageLookupByLibrary.simpleMessage("语言"),
-    "login" : MessageLookupByLibrary.simpleMessage("登录"),
     "logout" : MessageLookupByLibrary.simpleMessage("注销"),
     "logoutTip" : MessageLookupByLibrary.simpleMessage("确定要退出当前账号吗?"),
     "noDescription" : MessageLookupByLibrary.simpleMessage("暂无描述!"),
