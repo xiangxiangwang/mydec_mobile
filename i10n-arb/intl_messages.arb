@@ -21,6 +21,33 @@
     "type": "text",
     "placeholders": {}
   },
+  "personalInfo": "Personal Information",
+  "@personalInfo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "firstName": "First Name",
+  "@firstName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lastName": "Last Name",
+  "@lastName": {
+    "type": "text",
+    "placeholders": {}
+  },
+
+  "firstNameRequired": "First Name is Required",
+  "@firstNameRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lastNameRequired": "Last Name is Required",
+  "@lastNameRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+
   "language": "Language",
   "@language": {
     "type": "text",

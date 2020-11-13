@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 import 'account/routes/account_page.dart';
+import 'account/routes/personal_info.dart';
 import 'common/funs.dart';
 import 'common/loading_page.dart';
 import 'common/models/global.dart';
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
               "sunday_service":(context) => SundayServicePage(),
               "account":(context) => AccountPage(),
               "language":(context) => LanguagePage(),
+              "personalInfo":(context) => PersonalInfoPage(),
 
             },
           );

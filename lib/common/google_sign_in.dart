@@ -1,6 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mydec/account/models/user.dart';
+import 'package:mydec/account/services/user_service.dart';
+
+import 'models/global.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -38,12 +42,20 @@ Future<String> signInWithGoogle() async {
     assert(user.uid == currentUser.uid);
 
     print('signInWithGoogle succeeded: $user');
+    _loadUserInformation(currentUser.email);
 
     return '$user';
   }
 
   return null;
 }
+
+void _loadUserInformation(String email) {
+
+    UserService.onUserLogin(email);
+
+}
+
 
 Future<void> signOutGoogle() async {
   await googleSignIn.signOut();

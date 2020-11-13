@@ -100,6 +100,11 @@ class _AccountPageState extends State<AccountPage> {
             ),
                 ***/
             ListTile(
+              leading: const Icon(Icons.color_lens),
+              title: Text(DecLocalizations.of(context).personalInfo),
+              onTap: () => Navigator.pushNamed(context, "personalInfo"),
+            ),
+            ListTile(
               leading: const Icon(Icons.language),
               title: Text(DecLocalizations.of(context).language),
               onTap: () => Navigator.pushNamed(context, "language"),

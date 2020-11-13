@@ -3,8 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user.g.dart';
 
 @JsonSerializable()
-class User {
-    User();
+class DecUser {
+    DecUser();
 
     String login;
     num id;
@@ -27,7 +27,14 @@ class User {
     String updated_at;
     num total_private_repos;
     num owned_private_repos;
+
+    String firstName;
+    String lastName;
+    String pastoralZone;
+    String pastoralGroup;
+    String pastoralRole;
+    bool certifiedMember;
     
-    factory User.fromJson(Map<String,dynamic> json) => _$UserFromJson(json);
-    Map<String, dynamic> toJson() => _$UserToJson(this);
+    factory DecUser.fromJson(Map<String,dynamic> json) => _$DecUserFromJson(json);
+    Map<String, dynamic> toJson() => _$DecUserToJson(this);
 }

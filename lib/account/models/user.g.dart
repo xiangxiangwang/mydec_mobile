@@ -6,8 +6,8 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return User()
+DecUser _$DecUserFromJson(Map<String, dynamic> json) {
+  return DecUser()
     ..login = json['login'] as String
     ..id = json['id'] as num
     ..avatar_url = json['avatar_url'] as String
@@ -27,11 +27,17 @@ User _$UserFromJson(Map<String, dynamic> json) {
     ..following = json['following'] as num
     ..created_at = json['created_at'] as String
     ..updated_at = json['updated_at'] as String
+    ..firstName = json['firstName'] as String
+    ..lastName = json['lastName'] as String
+    ..pastoralZone = json['pastoralZone'] as String
+    ..pastoralGroup = json['pastoralGroup'] as String
+    ..pastoralRole = json['pastoralRole'] as String
+    ..certifiedMember = json['certifiedMember'] as bool
     ..total_private_repos = json['total_private_repos'] as num
     ..owned_private_repos = json['owned_private_repos'] as num;
 }
 
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+Map<String, dynamic> _$DecUserToJson(DecUser instance) => <String, dynamic>{
       'login': instance.login,
       'id': instance.id,
       'avatar_url': instance.avatar_url,
@@ -51,6 +57,12 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'following': instance.following,
       'created_at': instance.created_at,
       'updated_at': instance.updated_at,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'pastoralZone': instance.pastoralZone,
+      'pastoralGroup': instance.pastoralGroup,
+      'pastoralRole': instance.pastoralRole,
+      'certifiedMember': instance.certifiedMember,
       'total_private_repos': instance.total_private_repos,
       'owned_private_repos': instance.owned_private_repos
     };

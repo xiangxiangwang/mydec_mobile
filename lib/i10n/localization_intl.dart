@@ -34,6 +34,33 @@ class DecLocalizations {
 
   String get accountDisplay => Intl.message('Account Display', name: 'accountDisplay');
 
+  String get personalInfo => Intl.message('Personal Info', name: 'personalInfo');
+
+  String get firstName => Intl.message('First Name', name: 'firstName');
+
+  String get lastName => Intl.message('Last Name', name: 'lastName');
+
+  String get firstNameRequired => Intl.message('First Name Required', name: 'firstNameRequired');
+
+  String get lastNameRequired => Intl.message('Last Name Required', name: 'lastNameRequired');
+
+
+  String get pastoralZone => Intl.message('Pastoral Zone', name: 'pastoralZone');
+
+  String get pastoralGroup => Intl.message('Pastoral Group', name: 'pastoralGroup');
+
+  String get pastoralRole => Intl.message('Pastoral Role', name: 'pastoralRole');
+
+  String get certifiedMember => Intl.message('Certified Member', name: 'certifiedMember');
+
+  String get save => Intl.message('Save', name: 'save');
+
+
+  String get result => Intl.message('Result', name: 'result');
+  String get dataSaved => Intl.message('Data Saved', name: 'dataSaved');
+
+  ///////////////////////////////////////////////////////////////////////////////
+
   String get auto => Intl.message('Auto', name: 'auto');
 
   String get setting => Intl.message('Setting', name: 'setting');

@@ -17,11 +17,38 @@
     "placeholders": {}
   },
 
-  "accountDisplay": "个人信息",
+  "accountDisplay": "账户信息",
   "@account": {
     "type": "text",
     "placeholders": {}
   },
+  "personalInfo": "个人信息",
+  "@personalInfo": {
+    "type": "text",
+    "placeholders": {}
+  },
+
+  "firstName": "名",
+  "@firstName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lastName": "姓",
+  "@lastName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "firstNameRequired": "请输入名字",
+  "@firstNameRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "lastNameRequired": "请输入姓",
+  "@lastNameRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+
 
   "language": "语言",
   "@language": {

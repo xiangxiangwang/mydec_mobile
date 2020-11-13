@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mydec/common/models/global.dart';
 import 'package:mydec/common/models/profile.dart';
-import 'package:mydec/common/models/user.dart';
+import 'package:mydec/account/models/user.dart';
 
 class ProfileChangeNotifier extends ChangeNotifier {
   Profile get _profile => Global.profile;
@@ -17,13 +17,13 @@ class ProfileChangeNotifier extends ChangeNotifier {
 }
 
 class UserModel extends ProfileChangeNotifier {
-  User get user => _profile.user;
+  DecUser get user => _profile.user;
 
   // APP是否登录(如果有用户信息，则证明登录过)
   bool get isLogin => user != null;
 
   //用户信息发生变化，更新用户信息并通知依赖它的子孙Widgets更新
-  set user(User user) {
+  set user(DecUser user) {
     if (user?.login != _profile.user?.login) {
       _profile.lastLogin = _profile.user?.login;
       _profile.user = user;

@@ -1,5 +1,6 @@
+
 import 'package:json_annotation/json_annotation.dart';
-import "user.dart";
+import 'package:mydec/account/models/user.dart';
 import "cacheConfig.dart";
 part 'profile.g.dart';
 
@@ -7,7 +8,7 @@ part 'profile.g.dart';
 class Profile {
     Profile();
 
-    User user;
+    DecUser user;
     String token;
     num theme;
     CacheConfig cache;

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'common/google_sign_in.dart';
-import 'home/home.dart';
-import 'main.dart';
 
 class GoogleLoginPage extends StatefulWidget {
   @override
@@ -77,4 +75,5 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
       ),
     );
   }
+
 }

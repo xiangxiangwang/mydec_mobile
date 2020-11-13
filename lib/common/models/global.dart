@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mydec/account/models/user.dart';
 import 'package:mydec/common/models/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,7 +20,10 @@ const _themes = <MaterialColor>[
 class Global {
   static SharedPreferences _prefs;
   static Profile profile = Profile();
+
+  // static FirebaseApp firebaseApp;
   // 网络缓存对象
+  static DecUser _currentUser;
 
   // 可选的主题列表
   static List<MaterialColor> get themes => _themes;
@@ -30,6 +35,26 @@ class Global {
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     Firebase.initializeApp();
+    /**
+    firebaseApp = await Firebase.initializeApp(
+      name: 'db2',
+      options: Platform.isIOS || Platform.isMacOS
+          ? FirebaseOptions(
+            appId: '1:412003381077:ios:fad62e640089ef781249dc',
+            apiKey: 'AIzaSyAqcWywnAere4SibawMjPBrKh6Mc-r-GZo',
+            projectId: 'mydec-9160b',
+            messagingSenderId: '412003381077',
+            databaseURL: 'https://mydec-9160b.firebaseio.com',
+          )
+          : FirebaseOptions(
+            appId: '1:412003381077:android:5c1ae2d5707adb1f1249dc',
+            apiKey: 'AIzaSyAqcWywnAere4SibawMjPBrKh6Mc-r-GZo',
+            messagingSenderId: '412003381077',
+            projectId: 'mydec-9160b',
+            databaseURL: 'https://mydec-9160b.firebaseio.com',
+          ),
+    );
+        ***/
 
     _prefs = await SharedPreferences.getInstance();
     var _profile = _prefs.getString("profile");
@@ -52,4 +77,12 @@ class Global {
   // 持久化Profile信息
   static saveProfile() =>
       _prefs.setString("profile", jsonEncode(profile.toJson()));
+
+  static void setCurrentUser(DecUser user) {
+    _currentUser = user;
+  }
+  static DecUser getCurrentUser() {
+    return _currentUser;
+  }
+
 }
