@@ -1,15 +1,15 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:mydec/account/models/user.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
-import 'package:mydec/common/funs.dart';
 import 'package:mydec/common/google_sign_in.dart';
-import 'package:mydec/common/models/menu.dart';
+import 'package:mydec/common/models/global.dart';
 import 'package:mydec/i10n/localization_intl.dart';
-import 'package:mydec/sunday_service/models/sunday_service_menu.dart';
 
-import '../../web_view_page.dart';
 
+import 'dart:io';
 
 
 class AccountPage extends StatefulWidget {
@@ -19,6 +19,10 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
 
+
+  DecUser _currentUser = Global.getCurrentUser();
+  File _image;
+  final picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +70,19 @@ class _AccountPageState extends State<AccountPage> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: ClipOval(
-                        child: Image(image: AssetImage("assets/images/empty_user.png"), height: 135.0),
-                      ),
+                      child: InkWell(
+                        onTap: () => _uploadImage(),
+                        child: Container(
+                          child: ClipOval(
+                            clipper: _MyClipper(),
+                            child: _image == null
+                                ? Image(image: AssetImage("assets/images/empty_user.png"), height: 125.0, width: 125.0, fit: BoxFit.fill)
+                                : Image.file(_image, height: 125.0, width: 125.0, fit: BoxFit.fill),
+
+                          ),
+                        ),
+                      )
+
                     ),
                     Text(
                       getCurrentUser(),
@@ -76,6 +90,43 @@ class _AccountPageState extends State<AccountPage> {
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            _currentUser.firstName,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            "  "
+                          ),
+                          Text(
+                            _currentUser.lastName,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          _currentUser.certifiedMember == true  ?
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Row(
+                              // 如果已登录，则显示用户头像；若未登录，则显示默认头像
+                                children: <Widget>[
+                                  Image(image: AssetImage("assets/images/certifiedMember.png"), height: 15.0),
+                                  Text(DecLocalizations.of(context).certifiedMember),
+
+                                ]
+                              ),
+                            )
+                          :
+                          Text(""),
+                        ]
+
                     )
                   ],
                 ),
@@ -143,5 +194,30 @@ class _AccountPageState extends State<AccountPage> {
 
   }
 
+  Future _uploadImage() async {
+    print("start to pick image");
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
 }
 
+
+class _MyClipper extends CustomClipper<Rect>{
+  @override
+  Rect getClip(Size size) {
+    return new Rect.fromLTRB(0, 0, 120, 120);
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Rect> oldClipper) {
+    return false;
+  }
+}

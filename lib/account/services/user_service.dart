@@ -28,6 +28,7 @@ class UserService {
   static DecUser initUser(String email) {
     DecUser user = new DecUser();
     user.email = email;
+    user.certifiedMember = false;
 
     print('initUser: ${user.toJson()}');
     return user;

@@ -50,7 +50,6 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
           child: Column(
             children: <Widget>[
               TextFormField(
-
                   controller: _firstnameController,
                   decoration: InputDecoration(
                     labelText: DecLocalizations.of(context).firstName,
@@ -107,7 +106,7 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
                   child: Row(
                         children: <Widget>[
                           Checkbox(
-                            value: false,
+                            value: _currentUser.certifiedMember,
                             activeColor: Colors.blue, //选中时的颜色
                             onChanged: null
 
