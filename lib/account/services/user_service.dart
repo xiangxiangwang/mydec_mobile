@@ -62,6 +62,12 @@ class UserService {
         // it to the database
         DecUser user = new DecUser();
         user.email = email;
+        user.firstName = "";
+        user.lastName = "";
+        user.certifiedMember = false;
+        user.pastoralZone = "";
+        user.pastoralGroup = "";
+        user.pastoralRole = "";
 
         print('initUser: ${user.toJson()}');
 

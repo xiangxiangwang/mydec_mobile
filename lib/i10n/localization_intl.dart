@@ -59,6 +59,22 @@ class DecLocalizations {
   String get result => Intl.message('Result', name: 'result');
   String get dataSaved => Intl.message('Data Saved', name: 'dataSaved');
 
+
+  String get sundayServiceLive => Intl.message('Sunday Service Live', name: 'sundayServiceLive');
+  String get sundayServiceLiveSubtitle => Intl.message('Sunday Service Live Subtitle', name: 'sundayServiceLiveSubtitle');
+
+  String get sundayServiceYouth => Intl.message('Sunday Service Youth', name: 'sundayServiceYouth');
+  String get sundayServiceYouthSubtitle => Intl.message('Sunday Service South Subtitle', name: 'sundayServiceYouthSubtitle');
+
+  String get sundayServiceKids => Intl.message('Sunday Service Kids', name: 'sundayServiceKids');
+  String get sundayServiceKidsSubtitle => Intl.message('Sunday Service Kids Subtitle', name: 'sundayServiceKidsSubtitle');
+
+  String get sundayServicePray => Intl.message('Sunday Service Pray', name: 'sundayServicePray');
+  String get sundayServicePraySubtitle => Intl.message('Sunday Service Pray Subtitle', name: 'sundayServicePraySubtitle');
+
+  String get sundayServiceWeeklyReport => Intl.message('Sunday Service Weekly Report', name: 'sundayServiceWeeklyReport');
+  String get sundayServiceWeeklyReportSubtitle => Intl.message('Sunday Service Weekly Report Subtitle', name: 'sundayServiceWeeklyReportSubtitle');
+
   ///////////////////////////////////////////////////////////////////////////////
 
   String get auto => Intl.message('Auto', name: 'auto');

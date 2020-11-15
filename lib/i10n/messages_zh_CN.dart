@@ -38,6 +38,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "save" : MessageLookupByLibrary.simpleMessage("保存"),
     "result" : MessageLookupByLibrary.simpleMessage("结果"),
     "dataSaved" : MessageLookupByLibrary.simpleMessage("修改成功"),
+
+
+    "sundayServiceLive" : MessageLookupByLibrary.simpleMessage("主日崇拜直播"),
+    "sundayServiceLiveSubtitle" : MessageLookupByLibrary.simpleMessage("主日崇拜直播"),
+    "sundayServiceYouth" : MessageLookupByLibrary.simpleMessage("青少年主日"),
+    "sundayServiceYouthSubtitle" : MessageLookupByLibrary.simpleMessage("青少年主日"),
+    "sundayServiceKids" : MessageLookupByLibrary.simpleMessage("儿童主日崇拜"),
+    "sundayServiceKidsSubtitle" : MessageLookupByLibrary.simpleMessage("儿童主日崇拜"),
+    "sundayServicePray" : MessageLookupByLibrary.simpleMessage("动力祷告会"),
+    "sundayServicePraySubtitle" : MessageLookupByLibrary.simpleMessage("动力祷告会"),
+    "sundayServiceWeeklyReport" : MessageLookupByLibrary.simpleMessage("本周主日周报"),
+    "sundayServiceWeeklyReportSubtitle" : MessageLookupByLibrary.simpleMessage("本周主日周报"),
+
 ////////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "cancel" : MessageLookupByLibrary.simpleMessage("取消"),

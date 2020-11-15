@@ -1,9 +1,13 @@
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_plugin/zoom_options.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/funs.dart';
 import 'package:mydec/common/models/menu.dart';
+import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/sunday_service/models/sunday_service_menu.dart';
 
 import '../../web_view_page.dart';
@@ -16,6 +20,11 @@ class SundayServicePage extends StatefulWidget {
 }
 
 class _SundayServicePageState extends State<SundayServicePage> {
+  ZoomOptions zoomOptions;
+  ZoomMeetingOptions meetingOptions;
+
+  Timer timer;
+
 
   List<SundayServiceMenu> _sundayServiceMenus = [];
 
@@ -23,23 +32,54 @@ class _SundayServicePageState extends State<SundayServicePage> {
   void initState() {
     super.initState();
 
-    _initListTiles();
+
 
 
   }
 
-  void _initListTiles() {
+  void _initListTiles(BuildContext context) {
     _sundayServiceMenus.add(SundayServiceMenu.withValue(
-      "youtube", "Youtube", "click here to see youtube channel", "youtube.png", "https://www.youtube.com/watch?v=Xqz_n3duoH0&feature=youtu.be"
+      "sundayServiceLive",
+        DecLocalizations.of(context).sundayServiceLive,
+        DecLocalizations.of(context).sundayServiceLiveSubtitle,
+        "sunday_service_live.png",
+        "https://youtu.be/Xqz_n3duoH0"
     ));
     _sundayServiceMenus.add(SundayServiceMenu.withValue(
-        "youtube2", "Youtube 2", "22 click here to see youtube channel", "youtube.png", "https://www.youtube.com/watch?v=DSjLDPXf514"
+        "sundayServiceYouth",
+        DecLocalizations.of(context).sundayServiceYouth,
+        DecLocalizations.of(context).sundayServiceYouthSubtitle,
+        "sunday_service_youth.png",
+        "https://www.youtube.com/watch?v=xvBB6xvtCgc&t=15s"
     ));
+    _sundayServiceMenus.add(SundayServiceMenu.withValue(
+        "sundayServiceKids",
+        DecLocalizations.of(context).sundayServiceKids,
+        DecLocalizations.of(context).sundayServiceKidsSubtitle,
+        "sunday_service_kids.png",
+        "https://zoom.us/j/4981601988"
+    ));
+    _sundayServiceMenus.add(SundayServiceMenu.withValue(
+        "sundayServicePray",
+        DecLocalizations.of(context).sundayServicePray,
+        DecLocalizations.of(context).sundayServicePraySubtitle,
+        "sunday_service_pray.png",
+        "https://zoom.us/j/99357666623"
+    ));
+    _sundayServiceMenus.add(SundayServiceMenu.withValue(
+        "sundayServiceWeeklyReport",
+        DecLocalizations.of(context).sundayServiceWeeklyReport,
+        DecLocalizations.of(context).sundayServiceWeeklyReportSubtitle,
+        "sunday_service_weekly_report.png",
+        "https://drive.google.com/drive/folders/18cUJaVuZZakia5bDKjI97fpSnzfttAGJ"
+    ));
+
 
   }
 
   @override
   Widget build(BuildContext context) {
+    _initListTiles(context);
     return Scaffold(
         appBar: AppBar(title: Text("主日崇拜")),
         body: _buildBody(),
@@ -84,14 +124,22 @@ class _SundayServicePageState extends State<SundayServicePage> {
     );
   }
   _onTileClicked(SundayServiceMenu sundayServiceMenu) {
-    // Navigator.of(context).pushNamed("web_view_page", arguments: sundayServiceMenu.url);
-    Navigator.of(context)
-        .push(new MaterialPageRoute(builder: (_) {
-      return new Browser(
-        url: sundayServiceMenu.url,
-        title: sundayServiceMenu.title,
-      );
-    }));
+    print("${sundayServiceMenu.url} starts With zoom? ${sundayServiceMenu.url.startsWith("zoom")}");
+
+    if (sundayServiceMenu.url.startsWith("zoom")) {
+
+    }
+    else {
+
+      // Navigator.of(context).pushNamed("web_view_page", arguments: sundayServiceMenu.url);
+      Navigator.of(context)
+          .push(new MaterialPageRoute(builder: (_) {
+        return new Browser(
+          url: sundayServiceMenu.url,
+          title: sundayServiceMenu.title,
+        );
+      }));
+    }
 
 
   }

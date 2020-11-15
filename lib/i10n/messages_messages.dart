@@ -38,6 +38,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "certifiedMember" : MessageLookupByLibrary.simpleMessage("Certified Member"),
     "result" : MessageLookupByLibrary.simpleMessage("result"),
     "dataSaved" : MessageLookupByLibrary.simpleMessage("Data Saved"),
+
+    "sundayServiceLive" : MessageLookupByLibrary.simpleMessage("Sunday Service Live"),
+    "sundayServiceLiveSubtitle" : MessageLookupByLibrary.simpleMessage("Sunday Service"),
+    "sundayServiceYouth" : MessageLookupByLibrary.simpleMessage("Sunday Service Youth"),
+    "sundayServiceYouthSubtitle" : MessageLookupByLibrary.simpleMessage("Sunday Service Youth"),
+    "sundayServiceKids" : MessageLookupByLibrary.simpleMessage("Sunday Service Kids"),
+    "sundayServiceKidsSubtitle" : MessageLookupByLibrary.simpleMessage("Sunday Service Kids"),
+    "sundayServicePray" : MessageLookupByLibrary.simpleMessage("Sunday Service Pray"),
+    "sundayServicePraySubtitle" : MessageLookupByLibrary.simpleMessage("Sunday Service Pray"),
+    "sundayServiceWeeklyReport" : MessageLookupByLibrary.simpleMessage("Sunday Service Weekly Report"),
+    "sundayServiceWeeklyReportSubtitle" : MessageLookupByLibrary.simpleMessage("Sunday Service Weekly Report"),
+
     ////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),

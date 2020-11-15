@@ -34,7 +34,11 @@ class DecUser {
     String pastoralGroup;
     String pastoralRole;
     bool certifiedMember;
-    
+
+    String imageLocalPath;
+    String imageNetworkPath;
+
+
     factory DecUser.fromJson(Map<String,dynamic> json) => _$DecUserFromJson(json);
     Map<String, dynamic> toJson() => _$DecUserToJson(this);
 }
