@@ -35,6 +35,7 @@ class DecUser {
     String pastoralRole;
     bool certifiedMember;
 
+
     String imageLocalPath;
     String imageNetworkPath;
 

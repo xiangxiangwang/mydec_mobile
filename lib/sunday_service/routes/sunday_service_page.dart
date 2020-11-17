@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_plugin/zoom_options.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/funs.dart';
 import 'package:mydec/common/models/menu.dart';
@@ -20,8 +19,7 @@ class SundayServicePage extends StatefulWidget {
 }
 
 class _SundayServicePageState extends State<SundayServicePage> {
-  ZoomOptions zoomOptions;
-  ZoomMeetingOptions meetingOptions;
+
 
   Timer timer;
 

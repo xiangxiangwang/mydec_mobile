@@ -1,8 +1,10 @@
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mydec/account/models/user.dart';
+import 'package:mydec/account/services/user_service.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/google_sign_in.dart';
 import 'package:mydec/common/models/global.dart';
@@ -10,6 +12,7 @@ import 'package:mydec/i10n/localization_intl.dart';
 
 
 import 'dart:io';
+import 'package:path/path.dart' as Path;
 
 
 class AccountPage extends StatefulWidget {
@@ -23,6 +26,8 @@ class _AccountPageState extends State<AccountPage> {
   DecUser _currentUser = Global.getCurrentUser();
   File _image;
   final picker = ImagePicker();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +80,9 @@ class _AccountPageState extends State<AccountPage> {
                         child: Container(
                           child: ClipOval(
                             clipper: _MyClipper(),
-                            child: _image == null
-                                ? Image(image: AssetImage("assets/images/empty_user.png"), height: 125.0, width: 125.0, fit: BoxFit.fill)
-                                : Image.file(_image, height: 125.0, width: 125.0, fit: BoxFit.fill),
+                            child: _currentUser.imageNetworkPath == null || _currentUser.imageNetworkPath == ""
+                                ? Image(image: AssetImage("assets/images/empty_user.png"), height: 125.0, width: 125.0, fit: BoxFit.contain)
+                                : Image.network(_currentUser.imageNetworkPath, height: 125.0, width: 125.0, fit: BoxFit.fitWidth),
 
                           ),
                         ),
@@ -201,12 +206,35 @@ class _AccountPageState extends State<AccountPage> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+        _uploadFile();
       } else {
         print('No image selected.');
       }
     });
   }
+  Future _uploadFile() async {
+    Reference storageReference = FirebaseStorage.instance
+        .ref()
+        .child('images/${Path.basename(_image.path)}');
+    Task uploadTask = storageReference.putFile(_image);
+    await uploadTask.whenComplete(()  {
 
+          print('File Uploaded');
+          storageReference.getDownloadURL().then((fileURL) {
+
+            print('Download URL: $fileURL');
+            // update the current user's account
+            setState(() {
+              _currentUser.imageNetworkPath = fileURL;
+            });
+
+            UserService.persistUser(_currentUser);
+            Global.setCurrentUser(_currentUser);
+
+
+        });
+    });
+  }
 }
 
 

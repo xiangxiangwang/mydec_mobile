@@ -50,11 +50,13 @@ dependencies:
 
   image_picker: ^0.6.7+14
 
+  firebase_storage: ^5.0.1
+
   # web view to run zoom
-  flutter_zoom_plugin:
-    git:
-      url: git://github.com/decodedhealth/flutter_zoom_plugin.git
-      ref: master
+  # flutter_zoom_plugin:
+    #   git:
+    #     url: git://github.com/decodedhealth/flutter_zoom_plugin.git
+  #    ref: master
 
 dev_dependencies:
   flutter_test:
