@@ -10,9 +10,12 @@ class Menu {
   String url;
   String image;
 
+  // whether it is a page or a URL
+  bool openPage;
+
   Menu();
 
-  Menu.withValue(this.name,  this.text,  this.url,  this.image);
+  Menu.withValue(this.name,  this.text,  this.openPage, this.url,  this.image);
 
 
   factory Menu.fromJson(Map<String,dynamic> json) => _$MenuFromJson(json);

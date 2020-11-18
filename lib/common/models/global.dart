@@ -35,26 +35,7 @@ class Global {
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     Firebase.initializeApp();
-    /**
-    firebaseApp = await Firebase.initializeApp(
-      name: 'db2',
-      options: Platform.isIOS || Platform.isMacOS
-          ? FirebaseOptions(
-            appId: '1:412003381077:ios:fad62e640089ef781249dc',
-            apiKey: 'AIzaSyAqcWywnAere4SibawMjPBrKh6Mc-r-GZo',
-            projectId: 'mydec-9160b',
-            messagingSenderId: '412003381077',
-            databaseURL: 'https://mydec-9160b.firebaseio.com',
-          )
-          : FirebaseOptions(
-            appId: '1:412003381077:android:5c1ae2d5707adb1f1249dc',
-            apiKey: 'AIzaSyAqcWywnAere4SibawMjPBrKh6Mc-r-GZo',
-            messagingSenderId: '412003381077',
-            projectId: 'mydec-9160b',
-            databaseURL: 'https://mydec-9160b.firebaseio.com',
-          ),
-    );
-        ***/
+
 
     _prefs = await SharedPreferences.getInstance();
     var _profile = _prefs.getString("profile");

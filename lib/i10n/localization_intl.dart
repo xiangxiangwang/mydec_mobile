@@ -75,6 +75,22 @@ class DecLocalizations {
   String get sundayServiceWeeklyReport => Intl.message('Sunday Service Weekly Report', name: 'sundayServiceWeeklyReport');
   String get sundayServiceWeeklyReportSubtitle => Intl.message('Sunday Service Weekly Report Subtitle', name: 'sundayServiceWeeklyReportSubtitle');
 
+
+  String get signInWithGoogle => Intl.message('Sign In With Google', name: 'signInWithGoogle');
+  String get signInWithFacebook => Intl.message('Sign In With Facebook', name: 'signInWithFacebook');
+  String get signInWithLinkedIn => Intl.message('Sign In With LinkedIn', name: 'signInWithLinkedIn');
+  String get signInWithApple => Intl.message('Sign In With Apple', name: 'signInWithApple');
+
+  String get sundayService => Intl.message('Sunday Service', name: 'sundayService');
+  String get dailyQt => Intl.message('Daily QT', name: 'dailyQt');
+  String get morningPray => Intl.message('Morning Pray', name: 'morningPray');
+  String get classLearning => Intl.message('Class Learning', name: 'classLearning');
+  String get churchGroup => Intl.message('Church Group', name: 'churchGroup');
+  String get donation => Intl.message('Donation', name: 'donation');
+  String get faithConfession => Intl.message('Faith Confession', name: 'faithConfession');
+  String get ourVision => Intl.message('Our Vision', name: 'ourVision');
+
+
   ///////////////////////////////////////////////////////////////////////////////
 
   String get auto => Intl.message('Auto', name: 'auto');

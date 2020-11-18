@@ -29,10 +29,6 @@ class _SundayServicePageState extends State<SundayServicePage> {
   @override
   void initState() {
     super.initState();
-
-
-
-
   }
 
   void _initListTiles(BuildContext context) {

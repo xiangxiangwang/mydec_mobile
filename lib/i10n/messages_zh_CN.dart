@@ -51,6 +51,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "sundayServiceWeeklyReport" : MessageLookupByLibrary.simpleMessage("本周主日周报"),
     "sundayServiceWeeklyReportSubtitle" : MessageLookupByLibrary.simpleMessage("本周主日周报"),
 
+    "signInWithGoogle" : MessageLookupByLibrary.simpleMessage("用Google登录"),
+    "signInWithFacebook" : MessageLookupByLibrary.simpleMessage("用Facebook登录"),
+    "signInWithLinkedIn" : MessageLookupByLibrary.simpleMessage("用LinkedIn登录"),
+    "signInWithApple" : MessageLookupByLibrary.simpleMessage("用Apple登录"),
+
+
+    'sundayService': MessageLookupByLibrary.simpleMessage("主日直播"),
+    'dailyQt': MessageLookupByLibrary.simpleMessage("每日QT"),
+    'morningPray': MessageLookupByLibrary.simpleMessage("清晨祷告会"),
+    'classLearning': MessageLookupByLibrary.simpleMessage("装备/课程"),
+    'churchGroup': MessageLookupByLibrary.simpleMessage("教会小家"),
+    'donation': MessageLookupByLibrary.simpleMessage("奉献"),
+    'faithConfession': MessageLookupByLibrary.simpleMessage("信仰告白"),
+    'ourVision': MessageLookupByLibrary.simpleMessage("我们的异象"),
+
 ////////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "cancel" : MessageLookupByLibrary.simpleMessage("取消"),

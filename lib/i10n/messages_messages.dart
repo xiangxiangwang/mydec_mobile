@@ -50,6 +50,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "sundayServiceWeeklyReport" : MessageLookupByLibrary.simpleMessage("Sunday Service Weekly Report"),
     "sundayServiceWeeklyReportSubtitle" : MessageLookupByLibrary.simpleMessage("Sunday Service Weekly Report"),
 
+
+    "signInWithGoogle" : MessageLookupByLibrary.simpleMessage("Sign In With Google"),
+    "signInWithFacebook" : MessageLookupByLibrary.simpleMessage("Sign In With Facebook"),
+    "signInWithLinkedIn" : MessageLookupByLibrary.simpleMessage("Sign In With LinkedIn"),
+    "signInWithApple" : MessageLookupByLibrary.simpleMessage("Sign In With Apple"),
+
+    'sundayService': MessageLookupByLibrary.simpleMessage("Sunday Service"),
+    'dailyQt': MessageLookupByLibrary.simpleMessage("Daily QT"),
+    'morningPray': MessageLookupByLibrary.simpleMessage("Morning Pray"),
+    'classLearning': MessageLookupByLibrary.simpleMessage("Class"),
+    'churchGroup': MessageLookupByLibrary.simpleMessage("Church Group"),
+    'donation': MessageLookupByLibrary.simpleMessage("Donation"),
+    'faithConfession': MessageLookupByLibrary.simpleMessage("Faith Confession"),
+    'ourVision': MessageLookupByLibrary.simpleMessage("Our Vision"),
+
+
+
     ////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
     "cancel" : MessageLookupByLibrary.simpleMessage("cancel"),

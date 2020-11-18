@@ -4,23 +4,29 @@ import 'package:mydec/i10n/localization_intl.dart';
 
 Widget buildBottomNavigationBar(BuildContext context) {
 
-  List<String> urls= ["home", "account"];
+  List<String> urls= ["home", "404", "sunday_service", "account"];
 
   return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.blue,
-            ),
-            label:  DecLocalizations.of(context).home
+          // icon: Icon(Icons.home, color: Colors.blue),
+            icon: new Image.asset("assets/images/icon-bottom-nav-home.png", height: 25),
+            label:  DecLocalizations.of(context).home,
         ),
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              color: Colors.blue,
-            ),
-            label:   DecLocalizations.of(context).account
+          // icon: Icon(Icons.account_circle, color: Colors.blue),
+            icon: new Image.asset("assets/images/icon-bible-with-label.png", height: 25),
+            label:   DecLocalizations.of(context).dailyQt,
+        ),
+        BottomNavigationBarItem(
+          // icon: Icon(Icons.account_circle, color: Colors.blue),
+            icon: new Image.asset("assets/images/icon-worship-live.png", height: 25),
+            label:   DecLocalizations.of(context).sundayService,
+        ),
+        BottomNavigationBarItem(
+          //   icon: Icon(Icons.account_circle, color: Colors.blue),
+            icon: new Image.asset("assets/images/icon-bottom-nav-me.png", height: 25),
+            label:   DecLocalizations.of(context).account,
         )
       ],
       currentIndex: 0,

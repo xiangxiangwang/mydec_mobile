@@ -1,9 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mydec/page_404.dart';
 import 'package:mydec/states/profile_change_notifier.dart';
 import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
 import 'package:mydec/web_view_page.dart';
@@ -12,7 +10,6 @@ import 'package:provider/single_child_widget.dart';
 
 import 'account/routes/account_page.dart';
 import 'account/routes/personal_info.dart';
-import 'common/funs.dart';
 import 'common/loading_page.dart';
 import 'common/models/global.dart';
 import 'common/routes/language.dart';
@@ -20,13 +17,7 @@ import 'google_login_page.dart';
 import 'home/home.dart';
 import 'i10n/localization_intl.dart';
 
-import 'login_page.dart';
 
-/**
-void main() {
-  runApp(Dec4U());
-}
-    **/
 void main() => Global.init().then((e) => runApp(MyApp()));
 
 class MyApp extends StatelessWidget {
@@ -89,6 +80,7 @@ class MyApp extends StatelessWidget {
               "account":(context) => AccountPage(),
               "language":(context) => LanguagePage(),
               "personalInfo":(context) => PersonalInfoPage(),
+              "404":(context) => Page404(),
 
             },
           );
@@ -98,37 +90,6 @@ class MyApp extends StatelessWidget {
   }
 }
 /***
-class Dec4U extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // showLoading(context);
-    return FutureBuilder(
-      // Initialize FlutterFire
-      future: Firebase.initializeApp(),
-      builder: (context, snapshot) {
-        // Check for errors
-        if (snapshot.hasError) {
-          // we will need to show the error and let the user stay
-          // in the same page
-          print("snapshot.hasError");
-          return GoogleAuth();
-        }
-
-        // Once complete, show your application
-        if (snapshot.connectionState == ConnectionState.done) {
-          print("snapshot.connectionState == ConnectionState.done");
-          //Navigator.of(context).pop();
-          return GoogleAuth();
-        }
-
-        // Otherwise, show something whilst waiting for initialization to complete
-        print("wait for google auth");
-        return Loading();
-      },
-    );
-  }
-}
-**/
 class GoogleAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -165,7 +126,8 @@ class GoogleAuth extends StatelessWidget {
 
   }
 }
-
+**/
+/**
 class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -178,5 +140,5 @@ class Loading extends StatelessWidget {
     );
   }
 }
-
+***/
 
