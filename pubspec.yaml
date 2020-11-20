@@ -52,6 +52,19 @@ dependencies:
 
   firebase_storage: ^5.0.1
 
+  ###
+  # Note: latest version of chewie 0.10.0
+  # may have some display issue.
+  # in my testing, it displayed more than necessary
+  # with lots of space on the top and bottom of
+  # the video
+  # play video
+  # video_player: ^0.10.0
+  # chewie: ^0.12.0
+  chewie: ^0.9.7
+
+  flukit: ^1.0.2
+
   # web view to run zoom
   # flutter_zoom_plugin:
     #   git:
@@ -82,6 +95,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/videos/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

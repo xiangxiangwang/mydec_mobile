@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     _menuList.add(new Menu.withValue("sunnay_service", DecLocalizations.of(context).sundayService, true, "sunday_service", "icon-worship-live.png"));
-    _menuList.add(new Menu.withValue("daily_qt", DecLocalizations.of(context).dailyQt, false, "404", "icon-bible-with-label.png"));
+    _menuList.add(new Menu.withValue("daily_qt", DecLocalizations.of(context).dailyQt, true, "qt_list", "icon-bible-with-label.png"));
     _menuList.add(new Menu.withValue("morning_pray", DecLocalizations.of(context).morningPray, false, "https://zoom.us/j/3070131323", "icon-pray-hands.png"));
     _menuList.add(new Menu.withValue("class_learning", DecLocalizations.of(context).classLearning, false, "404", "icon-bible-study.png"));
     _menuList.add(new Menu.withValue("church_group", DecLocalizations.of(context).churchGroup, false, "404", "icon-church-group.png"));
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
 
   // Function to be called on click
   void _onTileClicked(Menu menu){
-    print("menu ${menu.name} clicked with url: ${menu.url}, empty? ${menu.url.isEmpty}");
+    print("menu ${menu.name} clicked with url: ${menu.url}, empty? ${menu.url.isEmpty}, menu.openPage? ${menu.openPage}");
     if (menu.url.isEmpty) {
       return;
     }

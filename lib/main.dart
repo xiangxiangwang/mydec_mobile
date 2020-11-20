@@ -2,15 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mydec/page_404.dart';
+import 'package:mydec/qt/routes/qt_list.dart';
 import 'package:mydec/states/profile_change_notifier.dart';
 import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
+
 import 'package:mydec/web_view_page.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 import 'account/routes/account_page.dart';
 import 'account/routes/personal_info.dart';
-import 'common/loading_page.dart';
 import 'common/models/global.dart';
 import 'common/routes/language.dart';
 import 'google_login_page.dart';
@@ -19,6 +20,7 @@ import 'i10n/localization_intl.dart';
 
 
 void main() => Global.init().then((e) => runApp(MyApp()));
+// void main() => runApp(ChewieTest());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -81,7 +83,7 @@ class MyApp extends StatelessWidget {
               "language":(context) => LanguagePage(),
               "personalInfo":(context) => PersonalInfoPage(),
               "404":(context) => Page404(),
-
+              "qt_list":(context) => QTListPage(),
             },
           );
         },
@@ -141,4 +143,3 @@ class Loading extends StatelessWidget {
   }
 }
 ***/
-

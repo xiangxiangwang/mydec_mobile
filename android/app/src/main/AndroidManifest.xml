@@ -8,8 +8,10 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="mydec"
-        android:icon="@mipmap/ic_launcher">
+        android:label="动力福音"
+        android:icon="@mipmap/app_icon"
+        android:usesCleartextTraffic="true"
+        >
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
