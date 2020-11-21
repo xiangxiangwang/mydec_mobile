@@ -13,9 +13,12 @@ class Menu {
   // whether it is a page or a URL
   bool openPage;
 
+  // whether it is a page or a URL
+  bool zoomLink;
+
   Menu();
 
-  Menu.withValue(this.name,  this.text,  this.openPage, this.url,  this.image);
+  Menu.withValue(this.name,  this.text,  this.openPage, this.zoomLink, this.url,  this.image);
 
 
   factory Menu.fromJson(Map<String,dynamic> json) => _$MenuFromJson(json);

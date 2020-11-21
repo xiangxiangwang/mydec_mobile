@@ -7,6 +7,7 @@ import 'package:mydec/states/profile_change_notifier.dart';
 import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
 
 import 'package:mydec/web_view_page.dart';
+import 'package:mydec/zoom_test.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -21,6 +22,7 @@ import 'i10n/localization_intl.dart';
 
 void main() => Global.init().then((e) => runApp(MyApp()));
 // void main() => runApp(ChewieTest());
+// void main() => runApp(ZoomTestPage());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

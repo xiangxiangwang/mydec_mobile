@@ -66,10 +66,10 @@ dependencies:
   flukit: ^1.0.2
 
   # web view to run zoom
-  # flutter_zoom_plugin:
-    #   git:
-    #     url: git://github.com/decodedhealth/flutter_zoom_plugin.git
-  #    ref: master
+  flutter_zoom_plugin:
+    git:
+      url: git://github.com/decodedhealth/flutter_zoom_plugin.git
+      ref: 0.0.8
 
 dev_dependencies:
   flutter_test:

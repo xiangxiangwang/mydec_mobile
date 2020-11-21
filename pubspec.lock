@@ -322,6 +322,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_zoom_plugin:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "0.0.8"
+      resolved-ref: "88d1fa2685f28d67410d46e094461a0a030d3192"
+      url: "git://github.com/decodedhealth/flutter_zoom_plugin.git"
+    source: git
+    version: "0.0.7"
   glob:
     dependency: transitive
     description:

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
+import 'package:mydec/zoom/meeting_screen.dart';
 
 import '../web_view_page.dart';
 
@@ -27,14 +28,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    _menuList.add(new Menu.withValue("sunnay_service", DecLocalizations.of(context).sundayService, true, "sunday_service", "icon-worship-live.png"));
-    _menuList.add(new Menu.withValue("daily_qt", DecLocalizations.of(context).dailyQt, true, "qt_list", "icon-bible-with-label.png"));
-    _menuList.add(new Menu.withValue("morning_pray", DecLocalizations.of(context).morningPray, false, "https://zoom.us/j/3070131323", "icon-pray-hands.png"));
-    _menuList.add(new Menu.withValue("class_learning", DecLocalizations.of(context).classLearning, false, "404", "icon-bible-study.png"));
-    _menuList.add(new Menu.withValue("church_group", DecLocalizations.of(context).churchGroup, false, "404", "icon-church-group.png"));
-    _menuList.add(new Menu.withValue("donation", DecLocalizations.of(context).donation, false, "https://dec4u.org/%e7%b7%9a%e4%b8%8a%e5%a5%89%e7%8d%bb/", "icon-offering-bag.png"));
-    _menuList.add(new Menu.withValue("faith_confession", DecLocalizations.of(context).faithConfession, false, "https://dec4u.org/%e4%bf%a1%e4%bb%b0%e5%91%8a%e7%99%bd/", "icon-fish.png"));
-    _menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, "https://dec4u.org/%e6%88%91%e5%80%91%e7%9a%84%e7%95%b0%e8%b1%a1/", "icon-trinity.png"));
+    _menuList.add(new Menu.withValue("sunnay_service", DecLocalizations.of(context).sundayService, true, false, "sunday_service", "icon-worship-live.png"));
+    _menuList.add(new Menu.withValue("daily_qt", DecLocalizations.of(context).dailyQt, true, false, "qt_list", "icon-bible-with-label.png"));
+    _menuList.add(new Menu.withValue("morning_pray", DecLocalizations.of(context).morningPray, false, true, "3070131323", "icon-pray-hands.png"));
+    _menuList.add(new Menu.withValue("class_learning", DecLocalizations.of(context).classLearning, false,false,  "404", "icon-bible-study.png"));
+    _menuList.add(new Menu.withValue("church_group", DecLocalizations.of(context).churchGroup, false, false, "404", "icon-church-group.png"));
+    _menuList.add(new Menu.withValue("donation", DecLocalizations.of(context).donation, false, false, "https://dec4u.org/%e7%b7%9a%e4%b8%8a%e5%a5%89%e7%8d%bb/", "icon-offering-bag.png"));
+    _menuList.add(new Menu.withValue("faith_confession", DecLocalizations.of(context).faithConfession, false, false,  "https://dec4u.org/%e4%bf%a1%e4%bb%b0%e5%91%8a%e7%99%bd/", "icon-fish.png"));
+    _menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "https://dec4u.org/%e6%88%91%e5%80%91%e7%9a%84%e7%95%b0%e8%b1%a1/", "icon-trinity.png"));
 
     return Scaffold(
 
@@ -74,6 +75,17 @@ class _HomePageState extends State<HomePage> {
 
       Navigator.of(context).pushNamed(menu.url);
     }
+    else if (menu.zoomLink == true) {
+      List<String> zoomLinkInfo = menu.url.split(":");
+      String meetingId = zoomLinkInfo[0];
+      String password = "";
+      if (zoomLinkInfo.length > 1) {
+        password = zoomLinkInfo[1];
+      }
+      _joinZoomMeeting(context, meetingId, password);
+
+      
+    }
     else {
       // we will use the web view to open the URL
       Navigator.of(context)
@@ -107,7 +119,15 @@ class _HomePageState extends State<HomePage> {
     return tiles;
   }
 
-
+  _joinZoomMeeting(BuildContext context, String meetingId, String password) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return MeetingWidget(meetingId: meetingId, meetingPassword: password);
+        },
+      ),
+    );
+  }
 
 }
 
