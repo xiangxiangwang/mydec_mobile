@@ -1,9 +1,11 @@
 
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:video_player/video_player.dart';
@@ -113,10 +115,17 @@ class _QTInfoPageState extends State<QTInfoPage> {
    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(widget.qtInfo.date),
-          Text(widget.qtInfo.title),
-           _buildVideoPlayer(),
-          Text(widget.qtInfo.content),
+          Text(widget.qtInfo.title,
+          style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),) //QT title bold
+          Text(
+              widget.qtInfo.date, // QT date
+          ),
+          _buildVideoPlayer(),
+          Text(widget.qtInfo.content,
+                style: TextStyle(wordSpacing: 10,
+                    fontSize: 14,
+                    letterSpacing: 2,
+                      fontStyle: FontStyle.italic,),  ), // QT Main body
           ]
         );
   }
