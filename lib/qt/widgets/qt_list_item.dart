@@ -82,7 +82,7 @@ class _QTListItemState extends State<QTListItem> {
                           style: TextStyle(
                             height: 1.15,
                             color: Colors.blueGrey[700],
-                            fontSize: 13,
+                            fontSize: 14,
                           ),
                         ),
                       ),
