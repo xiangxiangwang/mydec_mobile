@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 
+import 'models/global.dart';
+
 
 Widget buildBottomNavigationBar(BuildContext context) {
 
@@ -31,6 +33,7 @@ Widget buildBottomNavigationBar(BuildContext context) {
       ],
       currentIndex: 0,
       onTap: (int index) {
+
 
         Navigator.of(context).pushNamed(urls[index]);
       }

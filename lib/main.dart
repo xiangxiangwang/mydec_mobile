@@ -18,6 +18,7 @@ import 'common/routes/language.dart';
 import 'google_login_page.dart';
 import 'home/home.dart';
 import 'i10n/localization_intl.dart';
+import 'notification/routes/notification.dart';
 
 
 void main() => Global.init().then((e) => runApp(MyApp()));
@@ -26,8 +27,10 @@ void main() => Global.init().then((e) => runApp(MyApp()));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: <SingleChildWidget>[
         ChangeNotifierProvider.value(value: ThemeModel()),
@@ -40,6 +43,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: themeModel.theme,
             ),
+            navigatorKey: navigatorKey,
             onGenerateTitle: (context){
               return DecLocalizations.of(context).title;
             },
@@ -86,6 +90,7 @@ class MyApp extends StatelessWidget {
               "personalInfo":(context) => PersonalInfoPage(),
               "404":(context) => Page404(),
               "qt_list":(context) => QTListPage(),
+              "notification":(context) => NotificationInfoPage(),
             },
           );
         },

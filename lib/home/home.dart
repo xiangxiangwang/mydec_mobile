@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
 
   // Function to be called on click
   void _onTileClicked(Menu menu){
-    print("menu ${menu.name} clicked with url: ${menu.url}, empty? ${menu.url.isEmpty}, menu.openPage? ${menu.openPage}");
+
     if (menu.url.isEmpty) {
       return;
     }

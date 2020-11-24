@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
+import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:video_player/video_player.dart';
 
@@ -99,7 +100,7 @@ class _QTInfoPageState extends State<QTInfoPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: AppBar(title: Text("qt")),
+        appBar: AppBar(title: Text(DecLocalizations.of(context).dailyQt)),
          body: SingleChildScrollView(
             child: Stack(
                 children: <Widget>[_buildBody()]
@@ -116,7 +117,7 @@ class _QTInfoPageState extends State<QTInfoPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(widget.qtInfo.title,
-          style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),) //QT title bold
+          style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold)), //QT title bold
           Text(
               widget.qtInfo.date, // QT date
           ),

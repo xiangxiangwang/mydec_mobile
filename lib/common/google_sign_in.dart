@@ -44,7 +44,7 @@ Future<String> signInWithGoogle() async {
     print('signInWithGoogle succeeded: $user');
     _loadUserInformation(currentUser.email);
 
-    return '$user';
+    return '${user.email}';
   }
 
   return null;

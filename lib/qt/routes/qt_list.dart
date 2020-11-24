@@ -5,6 +5,7 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
+import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:mydec/qt/services/qt_info.dart';
 import 'package:mydec/qt/widgets/qt_list_item.dart';
@@ -24,7 +25,7 @@ class _QTListPageState extends State<QTListPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: AppBar(title: Text("qt")),
+        appBar: AppBar(title: Text(DecLocalizations.of(context).dailyQt)),
         body: _buildBody(),
         bottomNavigationBar: buildBottomNavigationBar(context)
     );

@@ -19,7 +19,7 @@ class UserService {
   }
 
   static DecUser getUserByEmail(String email) {
-    FirebaseDatabase.instance.reference().child(_encodeUserEmail(email)).once().then((DataSnapshot snapshot) {
+    FirebaseDatabase.instance.reference().child(encodeUserEmail(email)).once().then((DataSnapshot snapshot) {
       print('getUserByEmail: Connected to  database and read ${snapshot.value}');
       return DecUser.fromJson(snapshot.value);
     });
@@ -37,10 +37,10 @@ class UserService {
   static void persistUser(DecUser user) {
 
     print('will persist ${user.toJson()}');
-    FirebaseDatabase.instance.reference().child(_encodeUserEmail(user.email)).set(user.toJson());
+    FirebaseDatabase.instance.reference().child(encodeUserEmail(user.email)).set(user.toJson());
   }
 
-  static String _encodeUserEmail(String userEmail) {
+  static String encodeUserEmail(String userEmail) {
     return userEmail.replaceAll(".", ",");
   }
 
@@ -50,7 +50,7 @@ class UserService {
 
   static void onUserLogin(String email){
 
-    FirebaseDatabase.instance.reference().child(_encodeUserEmail(email)).once().then((DataSnapshot snapshot) {
+    FirebaseDatabase.instance.reference().child(encodeUserEmail(email)).once().then((DataSnapshot snapshot) {
       if (snapshot.value != null) {
         // we already have the user structrure setup for the email, let's load it
 
@@ -71,7 +71,7 @@ class UserService {
 
         print('initUser: ${user.toJson()}');
 
-        FirebaseDatabase.instance.reference().child(_encodeUserEmail(user.email)).set(user.toJson());
+        FirebaseDatabase.instance.reference().child(encodeUserEmail(user.email)).set(user.toJson());
         Global.setCurrentUser(user);
 
       }
