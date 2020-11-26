@@ -8,8 +8,10 @@ import 'package:mydec/common/funs.dart';
 import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/sunday_service/models/sunday_service_menu.dart';
+import 'package:mydec/sunday_service/services/sunday_service.dart';
+import 'package:mydec/zoom/meeting_screen.dart';
 
-import '../../web_view_page.dart';
+import '../../common/web_view_page.dart';
 
 
 
@@ -26,12 +28,17 @@ class _SundayServicePageState extends State<SundayServicePage> {
 
   List<SundayServiceMenu> _sundayServiceMenus = [];
 
+  Map<String,String> sundayServiceLinks;
+
   @override
   void initState() {
     super.initState();
   }
 
   void _initListTiles(BuildContext context) {
+
+    _sundayServiceMenus = [];
+
     _sundayServiceMenus.add(SundayServiceMenu.withValue(
       "sundayServiceLive",
         DecLocalizations.of(context).sundayServiceLive,
@@ -51,14 +58,14 @@ class _SundayServicePageState extends State<SundayServicePage> {
         DecLocalizations.of(context).sundayServiceKids,
         DecLocalizations.of(context).sundayServiceKidsSubtitle,
         "sunday_service_kids.png",
-        "https://zoom.us/j/4981601988"
+        "zoom@4981601988"
     ));
     _sundayServiceMenus.add(SundayServiceMenu.withValue(
         "sundayServicePray",
         DecLocalizations.of(context).sundayServicePray,
         DecLocalizations.of(context).sundayServicePraySubtitle,
         "sunday_service_pray.png",
-        "https://zoom.us/j/99357666623"
+        "zoom@99357666623"
     ));
     _sundayServiceMenus.add(SundayServiceMenu.withValue(
         "sundayServiceWeeklyReport",
@@ -68,9 +75,13 @@ class _SundayServicePageState extends State<SundayServicePage> {
         "https://drive.google.com/drive/folders/18cUJaVuZZakia5bDKjI97fpSnzfttAGJ"
     ));
 
+    _initSundayServiceLinks();
 
   }
+  _initSundayServiceLinks() async {
+    sundayServiceLinks = await SundayServiceService.getAllSundayServiceLinks();
 
+  }
   @override
   Widget build(BuildContext context) {
     _initListTiles(context);
@@ -120,16 +131,30 @@ class _SundayServicePageState extends State<SundayServicePage> {
   _onTileClicked(SundayServiceMenu sundayServiceMenu) {
     print("${sundayServiceMenu.url} starts With zoom? ${sundayServiceMenu.url.startsWith("zoom")}");
 
-    if (sundayServiceMenu.url.startsWith("zoom")) {
+    String url = sundayServiceLinks.containsKey(sundayServiceMenu.name) ?
+        sundayServiceLinks[sundayServiceMenu.name] : sundayServiceMenu.url;
+    if (url.startsWith("zoom")) {
+      // for zoom, the url will be in the format of
+      // zoom@meetingId:password
+      url = url.substring(6);
+      print("start to open zoom: $url");
+      List<String> zoomLinkInfo = url.split(":");
+      String meetingId = zoomLinkInfo[0];
+      String password = "";
+      if (zoomLinkInfo.length > 1) {
+        password = zoomLinkInfo[1];
+      }
+      _joinZoomMeeting(context, meetingId, password);
 
     }
     else {
+
 
       // Navigator.of(context).pushNamed("web_view_page", arguments: sundayServiceMenu.url);
       Navigator.of(context)
           .push(new MaterialPageRoute(builder: (_) {
         return new Browser(
-          url: sundayServiceMenu.url,
+          url: url,
           title: sundayServiceMenu.title,
         );
       }));
@@ -138,6 +163,15 @@ class _SundayServicePageState extends State<SundayServicePage> {
 
   }
 
+  _joinZoomMeeting(BuildContext context, String meetingId, String password) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return MeetingWidget(meetingId: meetingId, meetingPassword: password);
+        },
+      ),
+    );
+  }
 
 
 }

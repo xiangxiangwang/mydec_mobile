@@ -8,6 +8,7 @@ class DecNotification {
   DecNotification();
 
   String id;
+  String notificationId;
   String title;
   DateTime date;
   String content;

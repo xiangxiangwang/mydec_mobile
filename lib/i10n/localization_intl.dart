@@ -90,6 +90,8 @@ class DecLocalizations {
   String get faithConfession => Intl.message('Faith Confession', name: 'faithConfession');
   String get ourVision => Intl.message('Our Vision', name: 'ourVision');
 
+  String get notification => Intl.message('Notification', name: 'notification');
+  String get notificationHistory => Intl.message('Notification History', name: 'notificationHistory');
 
   ///////////////////////////////////////////////////////////////////////////////
 

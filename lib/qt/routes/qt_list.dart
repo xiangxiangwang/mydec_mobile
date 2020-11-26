@@ -56,7 +56,7 @@ class _QTListPageState extends State<QTListPage> {
             new DateTime.now().subtract(Duration(days: (page-1) * 15)),
           );
           //把请求到的新数据添加到items中
-          print("we get ${data.length} qt");
+          // print("we get ${data.length} qt");
           items.addAll(data);
           return data.length > 0 && data.length % 15 == 0;
         },

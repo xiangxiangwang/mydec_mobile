@@ -5,11 +5,11 @@ import 'dart:io' show Platform;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import 'account/services/user_service.dart';
-import 'common/google_sign_in.dart';
-import 'common/models/global.dart';
-import 'i10n/localization_intl.dart';
-import 'notification/models/dec_notification.dart';
+import '../../account/services/user_service.dart';
+import '../../common/google_sign_in.dart';
+import '../../common/models/global.dart';
+import '../../i10n/localization_intl.dart';
+import '../../notification/models/dec_notification.dart';
 
 class GoogleLoginPage extends StatefulWidget {
   @override
@@ -198,25 +198,18 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
   _postActionAfterLogin(String userEmail) {
     // start to listen to the notification
     String userKey = UserService.encodeUserEmail(userEmail);
-    print("_postActionAfterLogin: register notification for user: $userKey");
     _dbNotificationRef = FirebaseDatabase.instance.reference().child('user_notifications').child(userKey);
 
     //   StreamSubscription<Event> _notificationSubscription;
     _dbNotificationRef.keepSynced(true);
     _notificationSubscription = _dbNotificationRef.onChildAdded.listen((Event event) {
-      print("Start to show notification");
-      print("event.snapshot.value: ${event.snapshot.value}");
       if (event.snapshot.value != null) {
 
-        print("event.snapshot.value is not null, start to show the notification");
 
         Map<String, dynamic> result = new Map<String, dynamic>.from(event.snapshot.value);
-        print("result: $result");
 
         DecNotification _decNotification = DecNotification.fromJson(result);
 
-
-        print("START to process _decNotification: ${_decNotification.id}");
 
         Global.showNotification(_decNotification);
       }

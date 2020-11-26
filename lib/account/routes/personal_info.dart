@@ -11,7 +11,7 @@ import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/sunday_service/models/sunday_service_menu.dart';
 
-import '../../web_view_page.dart';
+import '../../common/web_view_page.dart';
 
 
 

@@ -66,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
     'faithConfession': MessageLookupByLibrary.simpleMessage("信仰告白"),
     'ourVision': MessageLookupByLibrary.simpleMessage("我们的异象"),
 
+
+    'notification': MessageLookupByLibrary.simpleMessage("通知"),
+    'notificationHistory': MessageLookupByLibrary.simpleMessage("历史通知"),
 ////////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "cancel" : MessageLookupByLibrary.simpleMessage("取消"),

@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
     'faithConfession': MessageLookupByLibrary.simpleMessage("Faith Confession"),
     'ourVision': MessageLookupByLibrary.simpleMessage("Our Vision"),
 
+    'notification': MessageLookupByLibrary.simpleMessage("Notification"),
+    'notificationHistory': MessageLookupByLibrary.simpleMessage("Notification History"),
 
 
     ////////////////////////////////////////////////

@@ -11,7 +11,7 @@ import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../chewie_list_item.dart';
+import '../../common/chewie_list_item.dart';
 
 
 
