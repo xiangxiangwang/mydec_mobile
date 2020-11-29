@@ -6,8 +6,6 @@ import 'package:mydec/qt/routes/qt_list.dart';
 import 'package:mydec/states/profile_change_notifier.dart';
 import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
 
-import 'file:///E:/git/github/xiangxiangwang/mydec/lib/common/web_view_page.dart';
-import 'file:///E:/git/github/xiangxiangwang/mydec/lib/common/zoom_test.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -16,6 +14,7 @@ import 'account/routes/personal_info.dart';
 import 'common/models/global.dart';
 import 'common/routes/language.dart';
 import 'authenticate/routes/google_login_page.dart';
+import 'common/web_view_page.dart';
 import 'home/home.dart';
 import 'i10n/localization_intl.dart';
 import 'notification/routes/notification.dart';
