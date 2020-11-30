@@ -48,9 +48,10 @@ class UserService {
     return userEmail.replaceAll(",", ".");
   }
 
-  static void onUserLogin(String email){
+  static Future<void> onUserLogin(String email) async {
 
-    FirebaseDatabase.instance.reference().child(encodeUserEmail(email)).once().then((DataSnapshot snapshot) {
+    DataSnapshot snapshot = await FirebaseDatabase.instance.reference().child(encodeUserEmail(email)).once();
+
       if (snapshot.value != null) {
         // we already have the user structrure setup for the email, let's load it
 
@@ -75,7 +76,5 @@ class UserService {
         Global.setCurrentUser(user);
 
       }
-
-    });
   }
 }

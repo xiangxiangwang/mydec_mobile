@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mydec/common/appbar.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/funs.dart';
 import 'package:mydec/common/models/menu.dart';
@@ -86,13 +87,16 @@ class _SundayServicePageState extends State<SundayServicePage> {
   Widget build(BuildContext context) {
     _initListTiles(context);
     return Scaffold(
-        appBar: AppBar(title: Text("主日崇拜")),
+        appBar: buildAppBar(context,
+            DecLocalizations.of(context).home,null),
         body: _buildBody(),
         bottomNavigationBar: buildBottomNavigationBar(context)
     );
   }
 
   Widget _buildBody() {
+    /***
+     * As of 11/29/2020, we will not use the list any more
     return ListView.separated(
       itemCount: _sundayServiceMenus.length,
       //列表项构造器
@@ -104,21 +108,74 @@ class _SundayServicePageState extends State<SundayServicePage> {
         return  Divider(color: Colors.blue);
       },
     );
-
-    /***
+        ***/
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        ListTile(
-          dense: true,
-          leading: Image(image: AssetImage("assets/images/youtube.png"), height: 35.0),
-          title: Text("Youtube",        textScaleFactor: .9),
-          subtitle:Text("click here to see youtube channel"),
-        )]
-    );
-        **/
-  }
 
+        InkWell(
+          onTap: () => _openPage("https://youtu.be/Xqz_n3duoH0", DecLocalizations.of(context).sundayServiceLive),
+          child: Container(
+             child: Image.asset('assets/images/card_sunday_service_live.png', fit: BoxFit.fitHeight,
+                 width: MediaQuery.of(context).size.width),
+          )
+        ),
+        Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            InkWell(
+              onTap: () => _openPage("zoom@4981601988", ""),
+              child: Container(
+                child: Image.asset('assets/images/card_sunday_service_kids.png', fit: BoxFit.fitHeight,
+                  width: MediaQuery.of(context).size.width /2),
+              ),
+            ),
+            InkWell(
+              onTap: () => _openPage("zoom@99357666623", ""),
+              child: Container(
+                child: Image.asset('assets/images/card_sunday_service_pray.png', fit: BoxFit.fitHeight,
+                  width: MediaQuery.of(context).size.width /2),
+              ),
+            ),
+
+          ]
+        )
+      ]
+    );
+
+  }
+  _openPage(String url, String title){
+    if (url.startsWith("zoom")) {
+      // for zoom, the url will be in the format of
+      // zoom@meetingId:password
+      url = url.substring(6);
+      print("start to open zoom: $url");
+      List<String> zoomLinkInfo = url.split(":");
+      String meetingId = zoomLinkInfo[0];
+      String password = "";
+      if (zoomLinkInfo.length > 1) {
+        password = zoomLinkInfo[1];
+      }
+      _joinZoomMeeting(context, meetingId, password);
+
+    }
+    else {
+
+
+      // Navigator.of(context).pushNamed("web_view_page", arguments: sundayServiceMenu.url);
+      Navigator.of(context)
+          .push(new MaterialPageRoute(builder: (_) {
+        return new Browser(
+          url: url,
+          title: title,
+        );
+      }));
+    }
+  }
   ListTile _getListTile(int index) {
     return ListTile(
       dense: true,

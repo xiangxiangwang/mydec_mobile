@@ -32,10 +32,10 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
         //child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               // FlutterLogo(size: 150),
-              Image(image: AssetImage("assets/images/login_page_church_logo.png"), height: 350),
+              Image(image: AssetImage("assets/images/login_page_church_logo.png")),
               //   width: 100.0
               // );
               _loginForm(),
@@ -180,7 +180,9 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.grey,
+
                 ),
+
               ),
             )
           ],

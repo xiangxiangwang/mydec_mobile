@@ -1,7 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mydec/account/models/user.dart';
+import 'package:mydec/common/appbar.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
+import 'package:mydec/common/models/global.dart';
 import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/zoom/meeting_screen.dart';
@@ -38,10 +41,14 @@ class _HomePageState extends State<HomePage> {
     _menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "https://dec4u.org/%e6%88%91%e5%80%91%e7%9a%84%e7%95%b0%e8%b1%a1/", "icon-trinity.png"));
     _menuList.add(new Menu.withValue("notification_history", DecLocalizations.of(context).notificationHistory, true, false, "notification_history", "icon-trinity.png"));
 
+    DecUser _currentUser = Global.getCurrentUser();
     return Scaffold(
-
-      body: _buildBody(),
-      bottomNavigationBar: buildBottomNavigationBar(context)
+          extendBodyBehindAppBar: true,
+          appBar: buildAppBar(context,
+              DecLocalizations.of(context).greetingMessage(_currentUser.email),
+              Image(image: AssetImage("assets/images/header_logo.png"))),
+            body: _buildBody(),
+            bottomNavigationBar: buildBottomNavigationBar(context)
     );
   }
 
@@ -58,6 +65,7 @@ class _HomePageState extends State<HomePage> {
             shrinkWrap: true,
             crossAxisCount: 3,
             childAspectRatio: 1.0,
+            padding: EdgeInsets.zero,
             children: _getTiles(_menuList),
           ),
         ], // 构建主页面

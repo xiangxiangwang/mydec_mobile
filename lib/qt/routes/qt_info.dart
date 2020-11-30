@@ -6,6 +6,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mydec/common/appbar.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/qt/models/qt_info.dart';
@@ -100,7 +101,10 @@ class _QTInfoPageState extends State<QTInfoPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: AppBar(title: Text(DecLocalizations.of(context).dailyQt)),
+        // appBar: AppBar(title: Text(DecLocalizations.of(context).dailyQt)),
+
+        appBar: buildAppBar(context,
+            DecLocalizations.of(context).dailyQt,null),
          body: SingleChildScrollView(
             child: Stack(
                 children: <Widget>[_buildBody()]

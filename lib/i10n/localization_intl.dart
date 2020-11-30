@@ -93,6 +93,15 @@ class DecLocalizations {
   String get notification => Intl.message('Notification', name: 'notification');
   String get notificationHistory => Intl.message('Notification History', name: 'notificationHistory');
 
+  String greetingMessage(Object name) {
+    return Intl.message(
+      'Hi {name}, Jesus Loves You',
+      name: 'greetingMessage',
+      desc: '',
+      args: [name],
+    );
+  }
+
   ///////////////////////////////////////////////////////////////////////////////
 
   String get auto => Intl.message('Auto', name: 'auto');

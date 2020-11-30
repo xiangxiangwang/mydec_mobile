@@ -11,6 +11,7 @@ import 'package:provider/single_child_widget.dart';
 
 import 'account/routes/account_page.dart';
 import 'account/routes/personal_info.dart';
+import 'common/loading_page.dart';
 import 'common/models/global.dart';
 import 'common/routes/language.dart';
 import 'authenticate/routes/google_login_page.dart';
@@ -20,8 +21,12 @@ import 'i10n/localization_intl.dart';
 import 'notification/routes/notification.dart';
 import 'notification/routes/notification_list.dart';
 
+import 'package:flutter/rendering.dart';
 
-void main() => Global.init().then((e) => runApp(MyApp()));
+void main() => Global.init().then((e) => {
+  // debugPaintSizeEnabled = true,
+  runApp(MyApp())
+});
 // void main() => runApp(ChewieTest());
 // void main() => runApp(ZoomTestPage());
 
@@ -47,7 +52,7 @@ class MyApp extends StatelessWidget {
             onGenerateTitle: (context){
               return DecLocalizations.of(context).title;
             },
-            home: GoogleLoginPage(),
+            home: LoadingPage(),
             locale: localeModel.getLocale(),
             //我们只支持美国英语和中文简体
             supportedLocales: [
