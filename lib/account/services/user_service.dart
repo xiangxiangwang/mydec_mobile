@@ -8,9 +8,9 @@ import 'package:mydec/common/models/global.dart';
 
 class UserService {
 
-  static bool userExists(String email) {
-    print('userExists WITH EMAIL: $email');
-    FirebaseDatabase.instance.reference().child("_encodeUserEmail(email)").once().then((DataSnapshot snapshot) {
+  static bool userExists(String uid) {
+    print('userExists WITH uid: $uid');
+    FirebaseDatabase.instance.reference().child("users").child(uid).once().then((DataSnapshot snapshot) {
       print('userExists: Connected to  database and read ${snapshot.value}');
       return true;
     });
@@ -18,16 +18,17 @@ class UserService {
     return false;
   }
 
-  static DecUser getUserByEmail(String email) {
-    FirebaseDatabase.instance.reference().child(encodeUserEmail(email)).once().then((DataSnapshot snapshot) {
+  static DecUser getUserByUID(String uid) {
+    FirebaseDatabase.instance.reference().child("users").child(uid).once().then((DataSnapshot snapshot) {
       print('getUserByEmail: Connected to  database and read ${snapshot.value}');
       return DecUser.fromJson(snapshot.value);
     });
 
   }
-  static DecUser initUser(String email) {
+  static DecUser initUser(String email, String uid) {
     DecUser user = new DecUser();
     user.email = email;
+    user.uid = uid;
     user.certifiedMember = false;
 
     print('initUser: ${user.toJson()}');
@@ -37,7 +38,7 @@ class UserService {
   static void persistUser(DecUser user) {
 
     print('will persist ${user.toJson()}');
-    FirebaseDatabase.instance.reference().child(encodeUserEmail(user.email)).set(user.toJson());
+    FirebaseDatabase.instance.reference().child("users").child(user.uid).set(user.toJson());
   }
 
   static String encodeUserEmail(String userEmail) {
