@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+
+/***
 class Browser extends StatelessWidget {
   const Browser({Key key, this.url, this.title}) : super(key: key);
 
@@ -24,6 +27,85 @@ class Browser extends StatelessWidget {
   }
 }
 
+
+
+    */
+
+class Browser extends StatefulWidget {
+  String url;
+  String title;
+
+  Browser({Key key, @required this.url, @required this.title});
+
+  @override
+  createState() => _BrowserState(url: url, title: title);
+}
+
+class _BrowserState extends State<Browser> {
+  _BrowserState({Key key, @required this.url, @required this.title});
+
+  String url;
+  String title;
+  FlutterWebviewPlugin _webViewPlugin = FlutterWebviewPlugin();
+
+  double lineProgress = 0.0;
+
+  initState() {
+    super.initState();
+    _webViewPlugin.onProgressChanged.listen((progress) {
+      print(progress);
+      setState(() {
+        lineProgress = progress;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WebviewScaffold(
+      appBar: _setTitle(context),
+      url: widget.url,
+      mediaPlaybackRequiresUserGesture: false,
+      withZoom: false,
+      withLocalStorage: true,
+      hidden: true,
+    );
+  }
+
+  _progressBar(double progress, BuildContext context) {
+    return Container(
+      child: LinearProgressIndicator(
+        backgroundColor: Colors.blueAccent.withOpacity(0),
+        value: progress == 1.0 ? 0 : progress,
+        valueColor: new AlwaysStoppedAnimation<Color>(Colors.lightBlue),
+      ),
+      height: 1,
+    );
+  }
+
+  _setTitle(context) {
+    return AppBar(
+      brightness: Brightness.light,
+      title: Text(title, style: TextStyle(color: Colors.black, fontSize: 20)),
+      elevation: 1,
+      leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.pop(context)),
+      backgroundColor: Colors.white,
+      centerTitle: true,
+      bottom: PreferredSize(
+        child: _progressBar(lineProgress, context),
+        preferredSize: Size.fromHeight(0.1),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _webViewPlugin.dispose();
+    super.dispose();
+  }
+}
 
 
 class WebViewPage extends StatefulWidget {

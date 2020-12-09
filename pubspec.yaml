@@ -74,6 +74,10 @@ dependencies:
   flutter_local_notifications: ^3.0.1+4
 
   floating_action_row: ^0.1.0
+
+  # web view plugin to show progress bar
+  flutter_webview_plugin: ^0.3.11
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

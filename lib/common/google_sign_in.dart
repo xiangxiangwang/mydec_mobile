@@ -42,7 +42,8 @@ Future<String> signInWithGoogle() async {
     assert(user.uid == currentUser.uid);
 
     print('signInWithGoogle succeeded: $user');
-    await _loadUserInformation(currentUser.email);
+    print('>> email: ${currentUser.email}, uid:${currentUser.uid}');
+    await _loadUserInformation(currentUser.email, currentUser.uid);
 
     return '${user.email}';
   }
@@ -50,9 +51,9 @@ Future<String> signInWithGoogle() async {
   return null;
 }
 
-Future<void> _loadUserInformation(String email) async{
+Future<void> _loadUserInformation(String email, String uid) async{
 
-  await UserService.onUserLogin(email);
+  await UserService.onUserLogin(email, uid);
 
 }
 

@@ -8,6 +8,7 @@ part of 'user.dart';
 
 DecUser _$DecUserFromJson(Map<String, dynamic> json) {
   return DecUser()
+    ..uid = json['uid'] as String
     ..login = json['login'] as String
     ..id = json['id'] as num
     ..avatar_url = json['avatar_url'] as String
@@ -41,6 +42,7 @@ DecUser _$DecUserFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DecUserToJson(DecUser instance) => <String, dynamic>{
       'login': instance.login,
+  'uid': instance.uid,
       'id': instance.id,
       'avatar_url': instance.avatar_url,
       'url': instance.url,

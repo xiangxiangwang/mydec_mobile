@@ -42,10 +42,15 @@ class _HomePageState extends State<HomePage> {
     _menuList.add(new Menu.withValue("notification_history", DecLocalizations.of(context).notificationHistory, true, false, "notification_history", "icon-trinity.png"));
 
     DecUser _currentUser = Global.getCurrentUser();
+
+    String username = _currentUser.firstName.isNotEmpty ?
+        _currentUser.firstName + " " + _currentUser.lastName
+        :
+        _currentUser.email;
     return Scaffold(
           extendBodyBehindAppBar: true,
           appBar: buildAppBar(context,
-              DecLocalizations.of(context).greetingMessage(_currentUser.email),
+              DecLocalizations.of(context).greetingMessage(username),
               Image(image: AssetImage("assets/images/header_logo.png"))),
             body: _buildBody(),
             bottomNavigationBar: buildBottomNavigationBar(context)

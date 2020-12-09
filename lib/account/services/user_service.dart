@@ -48,9 +48,9 @@ class UserService {
     return userEmail.replaceAll(",", ".");
   }
 
-  static Future<void> onUserLogin(String email) async {
+  static Future<void> onUserLogin(String email, String uid) async {
 
-    DataSnapshot snapshot = await FirebaseDatabase.instance.reference().child(encodeUserEmail(email)).once();
+    DataSnapshot snapshot = await FirebaseDatabase.instance.reference().child("users").child(uid).once();
 
       if (snapshot.value != null) {
         // we already have the user structrure setup for the email, let's load it
@@ -63,6 +63,7 @@ class UserService {
         // it to the database
         DecUser user = new DecUser();
         user.email = email;
+        user.uid = uid;
         user.firstName = "";
         user.lastName = "";
         user.certifiedMember = false;
@@ -70,9 +71,10 @@ class UserService {
         user.pastoralGroup = "";
         user.pastoralRole = "";
 
+
         print('initUser: ${user.toJson()}');
 
-        FirebaseDatabase.instance.reference().child(encodeUserEmail(user.email)).set(user.toJson());
+        FirebaseDatabase.instance.reference().child("users").child(uid).set(user.toJson());
         Global.setCurrentUser(user);
 
       }
