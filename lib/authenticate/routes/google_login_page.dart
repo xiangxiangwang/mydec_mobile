@@ -36,11 +36,9 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
             children: <Widget>[
               // FlutterLogo(size: 150),
               Image(image: AssetImage("assets/images/login_page_church_logo.png")),
-              //   width: 100.0
-              // );
-              _loginForm(),
+              // )
               // SizedBox(height: 50),
-              _signInButton(),
+              _signInButton()
             ],
           ),
         //),
@@ -50,7 +48,7 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
 
   Widget _loginForm() {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+      padding: const EdgeInsets.only( left: 16.0, right: 16.0),
       child: Form(
         key: _formKey,
         autovalidateMode: AutovalidateMode.always,
@@ -87,13 +85,10 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
   Widget _signInButton() {
     return GridView.count(
       shrinkWrap: true,
-      crossAxisCount: 2,
-      childAspectRatio: 5.0,
+      crossAxisCount: 1,
+      childAspectRatio: 3.0,
       children: <Widget>[
-        _signInWithFacebookButton(),
-        _signInWithLinkedInButton(),
-        _signInWithGoogleButton(),
-        _signInWithAppleButton()
+        _signInWithGoogleButton()
       ]
       /***
           children: <Widget>[
