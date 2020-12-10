@@ -1,11 +1,15 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mydec/account/models/user.dart';
 import 'package:mydec/common/models/profile.dart';
 import 'package:mydec/notification/models/dec_notification.dart';
+import 'package:mydec/notification/models/dec_user_notification.dart';
+import 'package:mydec/notification/services/notification_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
@@ -23,6 +27,12 @@ const _themes = <MaterialColor>[
 class Global {
   static SharedPreferences _prefs;
   static Profile profile = Profile();
+  static bool _hasNotification = false;
+
+  static EventBus eventBus = new EventBus();
+
+
+  static Timer _repeatibleTimer;
 
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   // static FirebaseApp firebaseApp;
@@ -71,18 +81,28 @@ class Global {
     flutterLocalNotificationsPlugin.initialize(initSetttings,
         onSelectNotification: onSelectNotification);
 
+
+    // refresh the has notification flag
+    _repeatibleTimer = new Timer.periodic(new Duration(seconds: 60), (timer) async {
+      bool newHasNotificationFlag = await NotificationInfoService.hasNonReadNotification(_currentUser.uid);
+      _resetHasNotificationFlag(newHasNotificationFlag);
+
+
+    });
+
   }
 
   static Future onSelectNotification(String payload) {
 
     Map<String, dynamic> result = new Map<String, dynamic>.from(json.decode(payload));
-    DecNotification _decNotification = DecNotification.fromJson(result);
-    MyApp.navigatorKey.currentState.pushNamed("notification", arguments: _decNotification);
+    DecUserNotification _decUserNotification = DecUserNotification.fromJson(result);
+    MyApp.navigatorKey.currentState.pushNamed("notification", arguments: _decUserNotification);
 
   }
 
-  static showNotification(DecNotification _decNotification) async {
+  static showNotification(DecUserNotification _decUserNotification) async {
 
+    _resetHasNotificationFlag(true);
     var android = new AndroidNotificationDetails(
         'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',
 
@@ -98,9 +118,9 @@ class Global {
 
     await flutterLocalNotificationsPlugin.show(
 
-        0, _decNotification.title, _decNotification.content, platform,
+        0, _decUserNotification.title, _decUserNotification.content, platform,
 
-        payload: json.encode(_decNotification.toJson()));
+        payload: json.encode(_decUserNotification.toJson()));
 
   }
 
@@ -115,4 +135,71 @@ class Global {
     return _currentUser;
   }
 
+  static bool hasNotification() {
+    return _hasNotification;
+  }
+
+  static Future<void> recalculateHasNotificationFlag() async {
+
+    bool newHasNotificationFlag = await NotificationInfoService.hasNonReadNotification(_currentUser.uid);
+
+    _resetHasNotificationFlag(newHasNotificationFlag);
+  }
+
+  static void _resetHasNotificationFlag(bool hasNotificationFlag) {
+    if (_hasNotification != hasNotificationFlag) {
+      // we get a new flag value, let's change the value and
+      // emit the event
+      eventBus.emit("hasNotificationFlagChange", hasNotificationFlag);
+      _hasNotification = hasNotificationFlag;
+    }
+  }
+
+}
+
+
+//订阅者回调签名
+typedef void EventCallback(arg);
+
+class EventBus {
+  //私有构造函数
+  EventBus._internal();
+
+  //保存单例
+  static EventBus _singleton = new EventBus._internal();
+
+  //工厂构造函数
+  factory EventBus()=> _singleton;
+
+  //保存事件订阅者队列，key:事件名(id)，value: 对应事件的订阅者队列
+  var _emap = new Map<Object, List<EventCallback>>();
+
+  //添加订阅者
+  void on(eventName, EventCallback f) {
+    if (eventName == null || f == null) return;
+    _emap[eventName] ??= new List<EventCallback>();
+    _emap[eventName].add(f);
+  }
+
+  //移除订阅者
+  void off(eventName, [EventCallback f]) {
+    var list = _emap[eventName];
+    if (eventName == null || list == null) return;
+    if (f == null) {
+      _emap[eventName] = null;
+    } else {
+      list.remove(f);
+    }
+  }
+
+  //触发事件，事件触发后该事件所有订阅者会被调用
+  void emit(eventName, [arg]) {
+    var list = _emap[eventName];
+    if (list == null) return;
+    int len = list.length - 1;
+    //反向遍历，防止订阅者在回调中移除自身带来的下标错位
+    for (var i = len; i > -1; --i) {
+      list[i](arg);
+    }
+  }
 }

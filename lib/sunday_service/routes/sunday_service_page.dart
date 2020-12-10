@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mydec/common/appbar.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/funs.dart';
+import 'package:mydec/common/models/global.dart';
 import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/sunday_service/models/sunday_service_menu.dart';
@@ -26,6 +27,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
 
   Timer timer;
 
+  bool _hasNotification = false;
 
   List<SundayServiceMenu> _sundayServiceMenus = [];
 
@@ -34,6 +36,13 @@ class _SundayServicePageState extends State<SundayServicePage> {
   @override
   void initState() {
     super.initState();
+    _hasNotification = Global.hasNotification();
+    Global.eventBus.on("hasNotificationFlagChange", (arg) {
+      setState(() {
+        _hasNotification = arg;
+      });
+      // do something
+    });
   }
 
   void _initListTiles(BuildContext context) {
@@ -88,7 +97,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
     _initListTiles(context);
     return Scaffold(
         appBar: buildAppBar(context,
-            DecLocalizations.of(context).home,null),
+            DecLocalizations.of(context).home,null, _hasNotification),
         body: _buildBody(),
         bottomNavigationBar: buildBottomNavigationBar(context)
     );

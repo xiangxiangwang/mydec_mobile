@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mydec/account/models/user.dart';
 import 'package:mydec/i10n/localization_intl.dart';
+import 'package:mydec/notification/services/notification_info.dart';
 
 import 'models/global.dart';
 
 
-Widget buildAppBar(BuildContext context, String title, Widget leading) {
+Widget buildAppBar(BuildContext context, String title,  Widget leading, bool hasNotification) {
 
   DecUser _currentUser = Global.getCurrentUser();
+
+
   return AppBar(
       iconTheme: IconThemeData(
           color: Colors.black26
@@ -25,7 +28,9 @@ Widget buildAppBar(BuildContext context, String title, Widget leading) {
           onTap: () => _showNotification(context),
           child: Container(
        //     child: Image.asset('assets/images/icon-alarm-bell-ring.png'),
-            child: Image(image:AssetImage('assets/images/icon-alarm-bell-ring.png'), fit: BoxFit.contain,height:22, width:22 )
+            child: hasNotification ?
+            Image(image:AssetImage('assets/images/notification_icon.png'), fit: BoxFit.contain,height:22, width:22 ):
+            Image(image:AssetImage('assets/images/icon-alarm-bell-ring.png'), fit: BoxFit.contain,height:22, width:22 )
           ),
         ),
         InkWell(
@@ -52,3 +57,4 @@ _showAccount(BuildContext context){
 
   Navigator.of(context).pushNamed("account");
 }
+

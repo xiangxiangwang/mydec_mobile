@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mydec/common/appbar.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
+import 'package:mydec/common/models/global.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:video_player/video_player.dart';
@@ -34,6 +35,7 @@ class _QTInfoPageState extends State<QTInfoPage> {
   double titleFontSize;
   double subtitleFontSize;
   double contentFontSize;
+  bool _hasNotification = false;
 
 
   List<Widget> floatButtons = [];
@@ -48,6 +50,16 @@ class _QTInfoPageState extends State<QTInfoPage> {
     titleFontSize = 20;
     subtitleFontSize = 14;
     contentFontSize = 14;
+
+
+    _hasNotification = Global.hasNotification();
+    Global.eventBus.on("hasNotificationFlagChange", (arg) {
+      print("Home's hasNotificationFlagChange: arg: $arg");
+      setState(() {
+        _hasNotification = arg;
+      });
+      // do something
+    });
   }
 
   Future<void> initializePlayer() async {
@@ -115,7 +127,7 @@ class _QTInfoPageState extends State<QTInfoPage> {
         // appBar: AppBar(title: Text(DecLocalizations.of(context).dailyQt)),
 
         appBar: buildAppBar(context,
-            DecLocalizations.of(context).dailyQt,null),
+            DecLocalizations.of(context).dailyQt,null, _hasNotification),
          body: SingleChildScrollView(
             child: Stack(
                 children: <Widget>[_buildBody()]

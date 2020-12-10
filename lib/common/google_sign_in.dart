@@ -45,7 +45,7 @@ Future<String> signInWithGoogle() async {
     print('>> email: ${currentUser.email}, uid:${currentUser.uid}');
     await _loadUserInformation(currentUser.email, currentUser.uid);
 
-    return '${user.email}';
+    return '${user.uid}';
   }
 
   return null;

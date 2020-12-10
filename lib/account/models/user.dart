@@ -30,9 +30,17 @@ class DecUser {
 
     String firstName;
     String lastName;
+    //牧区
     String pastoralZone;
+    //小家
     String pastoralGroup;
-    String pastoralRole;
+    //教会职份
+    String churchPosition;
+    //牧养职份
+    String shepherdPosition;
+    // 是否全职同工
+    bool fullTimeEmployee;
+    // 是否认证用户
     bool certifiedMember;
     String uid;
 

@@ -4,6 +4,7 @@ import 'dart:io' show Platform;
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:mydec/notification/models/dec_user_notification.dart';
 
 import '../../account/services/user_service.dart';
 import '../../common/google_sign_in.dart';
@@ -192,23 +193,26 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
   }
 
   // anything needed after the user login
-  _postActionAfterLogin(String userEmail) {
+  _postActionAfterLogin(String uid) {
     // start to listen to the notification
-    String userKey = UserService.encodeUserEmail(userEmail);
-    _dbNotificationRef = FirebaseDatabase.instance.reference().child('user_notifications').child(userKey);
+    _dbNotificationRef = FirebaseDatabase.instance.reference().child('user_notifications').child(uid);
 
     //   StreamSubscription<Event> _notificationSubscription;
     _dbNotificationRef.keepSynced(true);
     _notificationSubscription = _dbNotificationRef.onChildAdded.listen((Event event) {
+      // print("_postActionAfterLogin: ${event.snapshot.value}");
       if (event.snapshot.value != null) {
 
 
         Map<String, dynamic> result = new Map<String, dynamic>.from(event.snapshot.value);
 
-        DecNotification _decNotification = DecNotification.fromJson(result);
+        DecUserNotification _decUserNotification = DecUserNotification.fromJson(result);
+        if (_decUserNotification.readDate == null) {
+          Global.showNotification(_decUserNotification);
+
+        }
 
 
-        Global.showNotification(_decNotification);
       }
     });
 

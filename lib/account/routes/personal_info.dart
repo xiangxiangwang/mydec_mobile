@@ -96,11 +96,21 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
               child: Row(
                     children: <Widget>[
 
-                      Text(DecLocalizations.of(context).pastoralRole + ":"),
-                      Text(_currentUser.pastoralRole == null ? "N/A" : _currentUser.pastoralRole),
+                      Text(DecLocalizations.of(context).shepherdPosition + ":"),
+                      Text(_currentUser.shepherdPosition == null ? "N/A" : _currentUser.shepherdPosition),
 
                     ]
                 )),
+              Padding(
+                  padding: const EdgeInsets.only(top:16.0),
+                  child: Row(
+                      children: <Widget>[
+
+                        Text(DecLocalizations.of(context).churchPosition + ":"),
+                        Text(_currentUser.churchPosition == null ? "N/A" : _currentUser.churchPosition),
+
+                      ]
+                  )),
                 Padding(
                   padding: const EdgeInsets.only(top:16.0),
                   child: Row(
@@ -115,6 +125,20 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
 
                         ]
               )),
+              Padding(
+                  padding: const EdgeInsets.only(top:16.0),
+                  child: Row(
+                      children: <Widget>[
+                        Checkbox(
+                            value: _currentUser.fullTimeEmployee,
+                            activeColor: Colors.blue, //选中时的颜色
+                            onChanged: null
+
+                        ),
+                        Text(DecLocalizations.of(context).fullTimeEmployee),
+
+                      ]
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 25),
                 child: ConstrainedBox(

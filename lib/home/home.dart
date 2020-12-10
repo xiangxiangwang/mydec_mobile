@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mydec/account/models/user.dart';
@@ -7,6 +9,7 @@ import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/models/global.dart';
 import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
+import 'package:mydec/notification/services/notification_info.dart';
 import 'package:mydec/zoom/meeting_screen.dart';
 
 import '../common/web_view_page.dart';
@@ -21,12 +24,23 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Menu> _menuList = [];
 
+  DecUser _currentUser = Global.getCurrentUser();
+  bool _hasNotification = false;
+
   @override
   void initState() {
     super.initState();
+    _hasNotification = Global.hasNotification();
+    Global.eventBus.on("hasNotificationFlagChange", (arg) {
+      setState(() {
+        _hasNotification = arg;
+      });
+      // do something
+    });
 
 
   }
+
   
   @override
   Widget build(BuildContext context) {
@@ -51,7 +65,8 @@ class _HomePageState extends State<HomePage> {
           extendBodyBehindAppBar: true,
           appBar: buildAppBar(context,
               DecLocalizations.of(context).greetingMessage(username),
-              Image(image: AssetImage("assets/images/header_logo.png"))),
+              Image(image: AssetImage("assets/images/header_logo.png")),
+              _hasNotification),
             body: _buildBody(),
             bottomNavigationBar: buildBottomNavigationBar(context)
     );

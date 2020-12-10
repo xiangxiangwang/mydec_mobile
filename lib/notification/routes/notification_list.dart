@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/notification/models/dec_notification.dart';
+import 'package:mydec/notification/models/dec_user_notification.dart';
 import 'package:mydec/notification/services/notification_info.dart';
 import 'package:mydec/notification/widgets/notification_list_item.dart';
 import 'package:mydec/qt/models/qt_info.dart';
@@ -36,9 +37,14 @@ class _NotificationListPageState extends State<NotificationListPage> {
   }
 
   Widget _buildBody() {
-      return InfiniteListView<DecNotification>(
-        onRetrieveData: (int page, List<DecNotification> items, bool refresh) async {
-          List<DecNotification> data = await NotificationInfoService.getAllDecNotificationByRange(
+      return InfiniteListView<DecUserNotification>(
+        onRetrieveData: (int page, List<DecUserNotification> items, bool refresh) async {
+          // 列表下拉刷新，重新加载最新的N条记录
+          if (refresh) {
+            lastNotificationKey = "";
+
+          }
+          List<DecUserNotification> data = await NotificationInfoService.getAllDecUserNotificationByRange(
               page, 10, lastNotificationKey
           );
           //把请求到的新数据添加到items中
@@ -50,7 +56,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
         },
         itemBuilder: (List list, int index, BuildContext ctx) {
           // 项目信息列表项
-          return NotificationListItem(list[index]);
+          return UserNotificationListItem(list[index]);
         },
       );
   }

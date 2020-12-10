@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mydec/common/appbar.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
+import 'package:mydec/common/models/global.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:mydec/qt/services/qt_info.dart';
@@ -20,6 +21,21 @@ class QTListPage extends StatefulWidget {
 
 class _QTListPageState extends State<QTListPage> {
 
+  bool _hasNotification = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _hasNotification = Global.hasNotification();
+    Global.eventBus.on("hasNotificationFlagChange", (arg) {
+      setState(() {
+        _hasNotification = arg;
+      });
+      // do something
+    });
+
+
+  }
 
 
   @override
@@ -29,7 +45,7 @@ class _QTListPageState extends State<QTListPage> {
         // appBar: AppBar(title: Text(DecLocalizations.of(context).dailyQt)),
 
         appBar: buildAppBar(context,
-            DecLocalizations.of(context).home,null),
+            DecLocalizations.of(context).home,null, _hasNotification),
         body: _buildBody(),
         bottomNavigationBar: buildBottomNavigationBar(context)
     );

@@ -50,8 +50,11 @@ class DecLocalizations {
   String get pastoralGroup => Intl.message('Pastoral Group', name: 'pastoralGroup');
 
   String get pastoralRole => Intl.message('Pastoral Role', name: 'pastoralRole');
+  String get shepherdPosition => Intl.message('Shepherd Position', name: 'shepherdPosition');
+  String get churchPosition => Intl.message('Church Position', name: 'churchPosition');
 
   String get certifiedMember => Intl.message('Certified Member', name: 'certifiedMember');
+  String get fullTimeEmployee => Intl.message('Full Time Employee', name: 'fullTimeEmployee');
 
   String get save => Intl.message('Save', name: 'save');
 

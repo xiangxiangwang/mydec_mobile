@@ -70,7 +70,9 @@ class UserService {
         user.certifiedMember = false;
         user.pastoralZone = "";
         user.pastoralGroup = "";
-        user.pastoralRole = "";
+        user.shepherdPosition = "";
+        user.churchPosition = "";
+        user.fullTimeEmployee = false;
 
 
         print('initUser: ${user.toJson()}');

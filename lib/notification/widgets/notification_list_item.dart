@@ -4,19 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mydec/notification/models/dec_notification.dart';
+import 'package:mydec/notification/models/dec_user_notification.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:mydec/qt/routes/qt_info.dart';
 
-class NotificationListItem extends StatefulWidget {
-  NotificationListItem(this.decNotification) : super(key: ValueKey(decNotification.id));
+class UserNotificationListItem extends StatefulWidget {
+  UserNotificationListItem(this.decUserNotification) : super(key: ValueKey(decUserNotification.id));
 
-  final DecNotification decNotification;
+  final DecUserNotification decUserNotification;
 
   @override
-  _NotificationListItemState createState() => _NotificationListItemState();
+  _UserNotificationListItemState createState() => _UserNotificationListItemState();
 }
 
-class _NotificationListItemState extends State<NotificationListItem> {
+class _UserNotificationListItemState extends State<UserNotificationListItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,11 +48,14 @@ class _NotificationListItemState extends State<NotificationListItem> {
                       ),
                    **/
                   title: Text(
-                    DateFormat('yyyy-MM-dd HH:mm:ss').format(widget.decNotification.date),
+                    widget.decUserNotification.readDate == null ?
+                        DateFormat('yyyy-MM-dd HH:mm:ss').format(widget.decUserNotification.date) + "(New!)"
+                    :
+                    DateFormat('yyyy-MM-dd HH:mm:ss').format(widget.decUserNotification.date),
                     textScaleFactor: .9,
                   ),
                   subtitle: Text(
-                    widget.decNotification.title,
+                    widget.decUserNotification.title,
                   ),
                   // trailing: Text(widget.repo.language ?? ""),
                 ),
@@ -79,7 +83,7 @@ class _NotificationListItemState extends State<NotificationListItem> {
                         padding: const EdgeInsets.only(top: 3, bottom: 12),
                         child:
                         Text(
-                          widget.decNotification.content,
+                          widget.decUserNotification.content,
                           maxLines: 3,
                           style: TextStyle(
                             height: 1.15,
@@ -104,7 +108,11 @@ class _NotificationListItemState extends State<NotificationListItem> {
   _openNotificationInfoPage() {
     // Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationInfoPage()));
     // Navigator.of(context).pushNamed("qt_info", arguments: widget.qtInfo);
-    Navigator.of(context).pushNamed("notification", arguments: widget.decNotification);
+    Navigator.of(context).pushNamed("notification", arguments: widget.decUserNotification);
+
+    setState(() {
+      widget.decUserNotification.readDate = new DateTime.now();
+    });
   }
   // 构建卡片底部信息
 /***

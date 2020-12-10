@@ -32,7 +32,9 @@ DecUser _$DecUserFromJson(Map<String, dynamic> json) {
     ..lastName = json['lastName'] as String
     ..pastoralZone = json['pastoralZone'] as String
     ..pastoralGroup = json['pastoralGroup'] as String
-    ..pastoralRole = json['pastoralRole'] as String
+    ..shepherdPosition = json['shepherdPosition'] as String
+    ..churchPosition = json['churchPosition'] as String
+    ..fullTimeEmployee = json['fullTimeEmployee'] as bool
     ..certifiedMember = json['certifiedMember'] as bool
     ..imageLocalPath = json['imageLocalPath'] as String
     ..imageNetworkPath = json['imageNetworkPath'] as String
@@ -65,8 +67,10 @@ Map<String, dynamic> _$DecUserToJson(DecUser instance) => <String, dynamic>{
       'lastName': instance.lastName,
       'pastoralZone': instance.pastoralZone,
       'pastoralGroup': instance.pastoralGroup,
-      'pastoralRole': instance.pastoralRole,
+      'shepherdPosition': instance.shepherdPosition,
+      'churchPosition': instance.churchPosition,
       'certifiedMember': instance.certifiedMember,
+      'fullTimeEmployee': instance.fullTimeEmployee,
       'imageLocalPath': instance.imageLocalPath,
       'imageNetworkPath': instance.imageNetworkPath,
       'total_private_repos': instance.total_private_repos,
