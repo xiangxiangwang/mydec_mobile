@@ -14,6 +14,8 @@ class DecUserNotification {
   DateTime readDate;
   String content;
 
+  String url;
+
 
   factory DecUserNotification.fromJson(Map<String,dynamic> json) => _$DecUserNotificationFromJson(json);
   Map<String, dynamic> toJson() => _$DecUserNotificationToJson(this);

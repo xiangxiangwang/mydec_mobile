@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mydec/common/web_view_page.dart';
 import 'package:mydec/notification/models/dec_notification.dart';
 import 'package:mydec/notification/models/dec_user_notification.dart';
 import 'package:mydec/qt/models/qt_info.dart';
@@ -108,7 +109,17 @@ class _UserNotificationListItemState extends State<UserNotificationListItem> {
   _openNotificationInfoPage() {
     // Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationInfoPage()));
     // Navigator.of(context).pushNamed("qt_info", arguments: widget.qtInfo);
-    Navigator.of(context).pushNamed("notification", arguments: widget.decUserNotification);
+
+    // open the url instead of the notification page
+    // Navigator.of(context).pushNamed("notification", arguments: widget.decUserNotification);
+    print("will open : $widget.decUserNotification.url");
+    Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (_) {
+      return new Browser(
+        url: widget.decUserNotification.url,
+        title: widget.decUserNotification.title,
+      );
+    }));
 
     setState(() {
       widget.decUserNotification.readDate = new DateTime.now();

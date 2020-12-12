@@ -53,6 +53,8 @@ class _HomePageState extends State<HomePage> {
     _menuList.add(new Menu.withValue("donation", DecLocalizations.of(context).donation, false, false, "https://dec4u.org/%e7%b7%9a%e4%b8%8a%e5%a5%89%e7%8d%bb/", "icon-offering-bag.png"));
     _menuList.add(new Menu.withValue("faith_confession", DecLocalizations.of(context).faithConfession, false, false,  "https://dec4u.org/%e4%bf%a1%e4%bb%b0%e5%91%8a%e7%99%bd/", "icon-fish.png"));
     _menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "https://dec4u.org/%e6%88%91%e5%80%91%e7%9a%84%e7%95%b0%e8%b1%a1/", "icon-trinity.png"));
+    //_menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "http://52.53.193.119/", "icon-trinity.png"));
+    // _menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "https://firebasestorage.googleapis.com/v0/b/mydec-9160b.appspot.com/o/html%2Fnotification01.html?alt=media&token=c54292ce-0a6d-43f2-afaf-d3b537f220e8", "icon-trinity.png"));
     _menuList.add(new Menu.withValue("notification_history", DecLocalizations.of(context).notificationHistory, true, false, "notification_history", "icon-trinity.png"));
 
     DecUser _currentUser = Global.getCurrentUser();

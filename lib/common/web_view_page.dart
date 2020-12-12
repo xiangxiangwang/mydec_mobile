@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mydec/zoom/meeting_screen.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
@@ -58,6 +59,47 @@ class _BrowserState extends State<Browser> {
         lineProgress = progress;
       });
     });
+    _webViewPlugin.onUrlChanged.listen((String url) async {
+      print("will flow to $url");
+      // for zoom meeting, the url will be
+      // zoomus://id:password
+      String zoomLinkPrefix = "https://firebasestorage.googleapis.com/v0/b/mydec-9160b.appspot.com/o/html%2Floading_zoom.html";
+      if (url.startsWith(zoomLinkPrefix)) {
+        await _webViewPlugin.stopLoading();
+        await _webViewPlugin.goBack();
+        // Let's open the zoom meeting
+
+        List<String> zoomLinkInfo = url.substring(zoomLinkPrefix.length + 1).split("&");
+        print("zoomLinkInfo: $zoomLinkInfo");
+        String meetingId = "";
+        String password = "";
+
+        zoomLinkInfo.forEach((element) {
+          List<String> keyPair = element.split("=");
+          if (keyPair.length == 2) {
+            if (keyPair[0] == "meetingid") {
+              meetingId = keyPair[1];
+            }
+            else if (keyPair[0] == "password") {
+              password = keyPair[1];
+            }
+          }
+        });
+        print("start to connect to zoom meeting: $meetingId , $password");
+        _joinZoomMeeting(context, meetingId, password);
+
+      }
+    });
+  }
+
+  _joinZoomMeeting(BuildContext context, String meetingId, String password) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return MeetingWidget(meetingId: meetingId, meetingPassword: password);
+        },
+      ),
+    );
   }
 
   @override
