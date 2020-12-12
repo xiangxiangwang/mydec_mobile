@@ -3,9 +3,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mydec/common/models/global.dart';
 import 'package:mydec/common/web_view_page.dart';
 import 'package:mydec/notification/models/dec_notification.dart';
 import 'package:mydec/notification/models/dec_user_notification.dart';
+import 'package:mydec/notification/services/notification_info.dart';
 import 'package:mydec/qt/models/qt_info.dart';
 import 'package:mydec/qt/routes/qt_info.dart';
 
@@ -120,6 +122,9 @@ class _UserNotificationListItemState extends State<UserNotificationListItem> {
         title: widget.decUserNotification.title,
       );
     }));
+
+
+    NotificationInfoService.markNotificationAsRead(Global.getCurrentUser().uid, widget.decUserNotification);
 
     setState(() {
       widget.decUserNotification.readDate = new DateTime.now();

@@ -30,7 +30,6 @@ class _NotificationInfoPageState extends State<NotificationInfoPage> {
   Widget build(BuildContext context) {
     DecUserNotification decUserNotification = ModalRoute.of(context).settings.arguments;
 
-    NotificationInfoService.markNotificationAsRead(Global.getCurrentUser().uid, decUserNotification);
 
 
     return Scaffold(
