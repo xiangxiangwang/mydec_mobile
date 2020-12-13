@@ -98,7 +98,7 @@ class DecLocalizations {
 
   String greetingMessage(Object name) {
     return Intl.message(
-      'Hi {name}, Jesus Loves You',
+      'Hi $name, Jesus Loves You',
       name: 'greetingMessage',
       desc: '',
       args: [name],

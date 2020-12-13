@@ -109,12 +109,13 @@ class _UserNotificationListItemState extends State<UserNotificationListItem> {
   }
 
   _openNotificationInfoPage() {
-    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => NotificationInfoPage()));
-    // Navigator.of(context).pushNamed("qt_info", arguments: widget.qtInfo);
+
+
+    Navigator.of(context).pushNamed("notification", arguments: widget.decUserNotification);
 
     // open the url instead of the notification page
-    // Navigator.of(context).pushNamed("notification", arguments: widget.decUserNotification);
-    print("will open : $widget.decUserNotification.url");
+    /**
+    print("will open : ${widget.decUserNotification.url}");
     Navigator.of(context)
         .push(new MaterialPageRoute(builder: (_) {
       return new Browser(
@@ -125,7 +126,7 @@ class _UserNotificationListItemState extends State<UserNotificationListItem> {
 
 
     NotificationInfoService.markNotificationAsRead(Global.getCurrentUser().uid, widget.decUserNotification);
-
+**/
     setState(() {
       widget.decUserNotification.readDate = new DateTime.now();
     });

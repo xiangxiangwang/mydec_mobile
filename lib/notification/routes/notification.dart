@@ -1,21 +1,16 @@
 
-import 'dart:async';
 import 'dart:ui';
 
-import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:mydec/common/bottom_navigation_bar.dart';
-import 'package:mydec/common/models/global.dart';
-import 'package:mydec/i10n/localization_intl.dart';
-import 'package:mydec/notification/models/dec_notification.dart';
 import 'package:mydec/notification/models/dec_user_notification.dart';
-import 'package:mydec/notification/services/notification_info.dart';
-import 'package:mydec/qt/models/qt_info.dart';
-import 'package:video_player/video_player.dart';
 
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/html_parser.dart';
+import 'package:mydec/zoom/meeting_screen.dart';
 
 
 
@@ -53,13 +48,53 @@ class _NotificationInfoPageState extends State<NotificationInfoPage> {
           Text(
               DateFormat('yyyy-MM-dd HH:mm:ss').format(decUserNotification.date),
           ),
-
+/***
           Text(decUserNotification.content,
             style: TextStyle(wordSpacing: 10,
               fontSize: 14,
               letterSpacing: 2,
-              fontStyle: FontStyle.italic,),  ), // QT Main body
+              fontStyle: FontStyle.italic,),  ),
+    **/
+          Html(
+            data: decUserNotification.content,
+            onLinkTap: (url) => _openUrl(decUserNotification.title, url),
+          ),
         ]
+    );
+  }
+
+  _openUrl(String title, String url) {
+    print("open url: $url");
+    if (url.startsWith("zoom://")) {
+      List<String> zoomLinkInfo = url.substring(7).split(":");
+      String meetingId = zoomLinkInfo[0];
+      String password = "";
+      if (zoomLinkInfo.length > 1) {
+        password = zoomLinkInfo[1];
+      }
+      _joinZoomMeeting(context, meetingId, password);
+    }
+    /***
+    else {
+      // we will use the web view to open the URL
+      Navigator.of(context)
+          .push(new MaterialPageRoute(builder: (_) {
+        return new Browser(
+          url: url,
+          title: "title",
+        );
+      }));
+    }
+        **/
+  }
+
+  _joinZoomMeeting(BuildContext context, String meetingId, String password) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return MeetingWidget(meetingId: meetingId, meetingPassword: password);
+        },
+      ),
     );
   }
 
