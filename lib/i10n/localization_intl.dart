@@ -96,6 +96,12 @@ class DecLocalizations {
   String get notification => Intl.message('Notification', name: 'notification');
   String get notificationHistory => Intl.message('Notification History', name: 'notificationHistory');
 
+  String get sundayServiceChinese => Intl.message('Sunday Service - Chinese', name: 'sundayServiceChinese');
+  String get sundayServiceTime => Intl.message('Sunday 11:00 AM PDT', name: 'sundayServiceTime');
+  String get sundayServiceLiveZoom => Intl.message('Join Zoom Meeting', name: 'sundayServiceLiveZoom');
+  String get sundayServiceLiveYoutube => Intl.message('Youtube Live', name: 'sundayServiceLiveYoutube');
+  String get password => Intl.message('Password', name: 'password');
+
   String greetingMessage(Object name) {
     return Intl.message(
       'Hi $name, Jesus Loves You',
@@ -118,7 +124,6 @@ class DecLocalizations {
 
   String get userName => Intl.message('User Name', name: 'userName');
   String get userNameRequired => Intl.message("User name required!" , name: 'userNameRequired');
-  String get password => Intl.message('Password', name: 'password');
   String get passwordRequired => Intl.message('Password required!', name: 'passwordRequired');
   String get userNameOrPasswordWrong=>Intl.message('User name or password is not correct!', name: 'userNameOrPasswordWrong');
   String get logout => Intl.message('logout', name: 'logout');

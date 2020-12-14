@@ -73,6 +73,13 @@ class MessageLookup extends MessageLookupByLibrary {
     'notification': MessageLookupByLibrary.simpleMessage("Notification"),
     'notificationHistory': MessageLookupByLibrary.simpleMessage("Notification History"),
 
+
+    'sundayServiceChinese': MessageLookupByLibrary.simpleMessage("Sunday Service Chinese"),
+    'sundayServiceTime': MessageLookupByLibrary.simpleMessage("Sunday 11:00 AM PDT"),
+    'sundayServiceLiveZoom': MessageLookupByLibrary.simpleMessage("Join Zoom Meeting"),
+    'sundayServiceLiveYoutube': MessageLookupByLibrary.simpleMessage("Youtube Live"),
+    "password" : MessageLookupByLibrary.simpleMessage("Password"),
+
     'greetingMessage':greetingMessage,
 
     ////////////////////////////////////////////////
@@ -82,7 +89,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout" : MessageLookupByLibrary.simpleMessage("logout"),
     "logoutTip" : MessageLookupByLibrary.simpleMessage("Are you sure you want to quit your current account?"),
     "noDescription" : MessageLookupByLibrary.simpleMessage("No description yet !"),
-    "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "passwordRequired" : MessageLookupByLibrary.simpleMessage("Password required!"),
     "setting" : MessageLookupByLibrary.simpleMessage("Setting"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),

@@ -11,6 +11,7 @@ SundayServiceMenu _$SundayServiceMenuFromJson(Map<String, dynamic> json) {
     ..name = json['name'] as String
     ..title = json['title'] as String
     ..subtitle = json['subtitle'] as String
+    ..trailing = json['trailing'] as String
     ..url = json['url'] as String
     ..image = json['image'] as String;
 }
@@ -19,6 +20,7 @@ Map<String, dynamic> _$SundayServiceMenuToJson(SundayServiceMenu instance) =>
     <String, dynamic>{
       'name': instance.name,
       'title': instance.title,
+      'trailing':instance.trailing,
       'subtitle': instance.subtitle,
       'url': instance.url,
       'image': instance.image,

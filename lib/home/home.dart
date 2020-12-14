@@ -9,11 +9,10 @@ import 'package:mydec/common/bottom_navigation_bar.dart';
 import 'package:mydec/common/models/global.dart';
 import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
-import 'package:mydec/notification/services/notification_info.dart';
 import 'package:mydec/zoom/meeting_screen.dart';
 
 import '../common/web_view_page.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -23,8 +22,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Menu> _menuList = [];
-
-  DecUser _currentUser = Global.getCurrentUser();
+  List<String> _carouselImageList = [];
+ 
   bool _hasNotification = false;
 
   @override
@@ -41,9 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   }
 
-  
-  @override
-  Widget build(BuildContext context) {
+  _initMenuList(){
     _menuList.clear();
     _menuList.add(new Menu.withValue("sunnay_service", DecLocalizations.of(context).sundayService, true, false, "sunday_service", "icon-worship-live.png"));
     _menuList.add(new Menu.withValue("daily_qt", DecLocalizations.of(context).dailyQt, true, false, "qt_list", "icon-bible-with-label.png"));
@@ -56,6 +53,21 @@ class _HomePageState extends State<HomePage> {
     //_menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "http://52.53.193.119/", "icon-trinity.png"));
     // _menuList.add(new Menu.withValue("our_vision", DecLocalizations.of(context).ourVision, false, false, "https://firebasestorage.googleapis.com/v0/b/mydec-9160b.appspot.com/o/html%2Fnotification01.html?alt=media&token=c54292ce-0a6d-43f2-afaf-d3b537f220e8", "icon-trinity.png"));
     _menuList.add(new Menu.withValue("notification_history", DecLocalizations.of(context).notificationHistory, true, false, "notification_history", "icon-trinity.png"));
+  }
+  _initCarouselImageList(){
+    _carouselImageList.clear();
+    _carouselImageList.add("banner.png");
+    _carouselImageList.add("card_sunday_service_kids.png");
+    _carouselImageList.add("card_sunday_service_live.png");
+    _carouselImageList.add("card_sunday_service_pray.png");
+
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    _initMenuList();
+    _initCarouselImageList();
+
 
     DecUser _currentUser = Global.getCurrentUser();
 
@@ -82,7 +94,16 @@ class _HomePageState extends State<HomePage> {
 
         children: <Widget>[
           // FlutterLogo(size: 150),
-          Image(image: AssetImage("assets/images/banner.png")),
+         // Image(image: AssetImage("assets/images/banner.png")),
+          CarouselSlider(
+            options: CarouselOptions(height: 250.0),
+            items: _carouselImageList.map((item) => Container(
+              margin: EdgeInsets.all(5.0),
+              child: Center(
+                  child: Image(image: AssetImage("assets/images/" + item), fit: BoxFit.cover, width: 1000)
+              ),
+            )).toList(),
+          ),
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 3,

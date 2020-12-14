@@ -29,9 +29,9 @@ class _SundayServicePageState extends State<SundayServicePage> {
 
   bool _hasNotification = false;
 
-  List<SundayServiceMenu> _sundayServiceMenus = [];
+//   List<SundayServiceMenu> _sundayServiceMenus = [];
 
-  Map<String,String> sundayServiceLinks;
+  // Map<String,String> sundayServiceLinks;
 
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
       // do something
     });
   }
-
+  /***
   void _initListTiles(BuildContext context) {
 
     _sundayServiceMenus = [];
@@ -56,7 +56,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
         "sunday_service_live.png",
         "https://youtu.be/Xqz_n3duoH0"
     ));
-    _sundayServiceMenus.add(SundayServiceMenu.withValue(
+    _sundayServiceMenus.add(SundafyServiceMenu.withValue(
         "sundayServiceYouth",
         DecLocalizations.of(context).sundayServiceYouth,
         DecLocalizations.of(context).sundayServiceYouthSubtitle,
@@ -92,9 +92,10 @@ class _SundayServicePageState extends State<SundayServicePage> {
     sundayServiceLinks = await SundayServiceService.getAllSundayServiceLinks();
 
   }
+      ***/
   @override
   Widget build(BuildContext context) {
-    _initListTiles(context);
+    // _initListTiles(context);
     return Scaffold(
         appBar: buildAppBar(context,
             DecLocalizations.of(context).home,null, _hasNotification),
@@ -125,7 +126,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
       children: <Widget>[
 
         InkWell(
-          onTap: () => _openPage("https://youtu.be/Xqz_n3duoH0", DecLocalizations.of(context).sundayServiceLive),
+          onTap: () => _openPage("sunday_service_live", DecLocalizations.of(context).sundayServiceLive),
           child: Container(
              child: Image.asset('assets/images/card_sunday_service_live.png', fit: BoxFit.fitHeight,
                  width: MediaQuery.of(context).size.width),
@@ -172,9 +173,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
       _joinZoomMeeting(context, meetingId, password);
 
     }
-    else {
-
-
+    else if (url.startsWith("http")) {
       // Navigator.of(context).pushNamed("web_view_page", arguments: sundayServiceMenu.url);
       Navigator.of(context)
           .push(new MaterialPageRoute(builder: (_) {
@@ -184,10 +183,16 @@ class _SundayServicePageState extends State<SundayServicePage> {
         );
       }));
     }
+    else {
+      Navigator.of(context).pushNamed(url);
+    }
   }
+
+  /***
   ListTile _getListTile(int index) {
     return ListTile(
       dense: true,
+
       leading: Image(image: AssetImage("assets/images/${_sundayServiceMenus[index].image}"), height: 55.0),
       title: Text(_sundayServiceMenus[index].title,        textScaleFactor: .9),
       subtitle:Text(_sundayServiceMenus[index].subtitle),
@@ -228,6 +233,7 @@ class _SundayServicePageState extends State<SundayServicePage> {
 
 
   }
+   **/
 
   _joinZoomMeeting(BuildContext context, String meetingId, String password) {
     Navigator.of(context).push(

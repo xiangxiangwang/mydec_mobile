@@ -59,6 +59,7 @@ class _BrowserState extends State<Browser> {
         lineProgress = progress;
       });
     });
+    /***
     _webViewPlugin.onUrlChanged.listen((String url) async {
       print("will flow to $url");
       // for zoom meeting, the url will be
@@ -90,6 +91,7 @@ class _BrowserState extends State<Browser> {
 
       }
     });
+        ***/
   }
 
   _joinZoomMeeting(BuildContext context, String meetingId, String password) {

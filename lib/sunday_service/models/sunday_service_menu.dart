@@ -8,12 +8,13 @@ class SundayServiceMenu {
   String name;
   String title;
   String subtitle;
+  String trailing;
   String image;
   String url;
 
   SundayServiceMenu();
 
-  SundayServiceMenu.withValue(this.name,  this.title,  this.subtitle,  this.image, this.url);
+  SundayServiceMenu.withValue(this.name,  this.title,  this.subtitle,  this.trailing,   this.image, this.url);
 
 
   factory SundayServiceMenu.fromJson(Map<String,dynamic> json) => _$SundayServiceMenuFromJson(json);

@@ -75,6 +75,13 @@ class MessageLookup extends MessageLookupByLibrary {
     'notification': MessageLookupByLibrary.simpleMessage("通知"),
     'notificationHistory': MessageLookupByLibrary.simpleMessage("历史通知"),
 
+    'sundayServiceChinese': MessageLookupByLibrary.simpleMessage("华语堂主日"),
+    'sundayServiceTime': MessageLookupByLibrary.simpleMessage("周日 11:00 AM PDT"),
+    'sundayServiceLiveZoom': MessageLookupByLibrary.simpleMessage("参加ZOOM聚会"),
+    'sundayServiceLiveYoutube': MessageLookupByLibrary.simpleMessage("观看Youtube直播"),
+    "password" : MessageLookupByLibrary.simpleMessage("密码"),
+
+
     'greetingMessage':greetingMessage,
 ////////////////////////////////////////////////////
     "auto" : MessageLookupByLibrary.simpleMessage("跟随系统"),
@@ -83,7 +90,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout" : MessageLookupByLibrary.simpleMessage("注销"),
     "logoutTip" : MessageLookupByLibrary.simpleMessage("确定要退出当前账号吗?"),
     "noDescription" : MessageLookupByLibrary.simpleMessage("暂无描述!"),
-    "password" : MessageLookupByLibrary.simpleMessage("密码"),
     "passwordRequired" : MessageLookupByLibrary.simpleMessage("密码不能为空"),
     "setting" : MessageLookupByLibrary.simpleMessage("设置"),
     "theme" : MessageLookupByLibrary.simpleMessage("换肤"),

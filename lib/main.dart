@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mydec/page_404.dart';
 import 'package:mydec/qt/routes/qt_list.dart';
 import 'package:mydec/states/profile_change_notifier.dart';
+import 'package:mydec/sunday_service/routes/sunday_service_live_page.dart';
 import 'package:mydec/sunday_service/routes/sunday_service_page.dart';
 
 import 'package:provider/provider.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
               "home":(context) => HomePage(),
               "web_view_page":(context) => WebViewPage(),
               "sunday_service":(context) => SundayServicePage(),
+              "sunday_service_live":(context) => SundayServiceLivePage(),
               "account":(context) => AccountPage(),
               "language":(context) => LanguagePage(),
               "personalInfo":(context) => PersonalInfoPage(),

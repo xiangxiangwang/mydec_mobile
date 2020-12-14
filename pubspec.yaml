@@ -81,6 +81,9 @@ dependencies:
   # controller that can display html code
   flutter_html: ^0.11.1
 
+  # carousel to display pictures for news
+  carousel_slider: ^2.3.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
