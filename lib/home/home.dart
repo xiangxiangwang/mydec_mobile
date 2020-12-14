@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         :
         _currentUser.email;
     return Scaffold(
-          extendBodyBehindAppBar: true,
+          extendBodyBehindAppBar: false,
           appBar: buildAppBar(context,
               DecLocalizations.of(context).greetingMessage(username),
               Image(image: AssetImage("assets/images/header_logo.png")),
