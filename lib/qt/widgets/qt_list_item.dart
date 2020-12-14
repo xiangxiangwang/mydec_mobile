@@ -18,7 +18,7 @@ class _QTListItemState extends State<QTListItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsets.only(top: 12.0),
       child: Material(
         color: Colors.white,
         shape: BorderDirectional(
@@ -45,11 +45,21 @@ class _QTListItemState extends State<QTListItem> {
                       ),
                    **/
                   title: Text(
-                    widget.qtInfo.date,
+                    widget.qtInfo.title,
                     textScaleFactor: .9,
+                    style: TextStyle(
+                      height: 1.15,
+                      color: Colors.blueGrey[700],
+                      fontSize: 15,
+                    ),
+
                   ),
                   subtitle: Text(
-                    widget.qtInfo.title,
+                    widget.qtInfo.date,
+                    style: TextStyle(
+                      color: Colors.blueGrey[700],
+                      fontSize: 12,
+                    ),
                   ),
                   // trailing: Text(widget.repo.language ?? ""),
                 ),
@@ -74,7 +84,7 @@ class _QTListItemState extends State<QTListItem> {
                           ),
                        ***/
                       Padding(
-                        padding: const EdgeInsets.only(top: 3, bottom: 12),
+                        padding: const EdgeInsets.only(top: 1, bottom: 1),
                         child:
                         Text(
                           widget.qtInfo.content,
@@ -82,7 +92,7 @@ class _QTListItemState extends State<QTListItem> {
                           style: TextStyle(
                             height: 1.15,
                             color: Colors.blueGrey[700],
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         ),
                       ),

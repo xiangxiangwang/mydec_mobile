@@ -47,8 +47,8 @@ class _QTInfoPageState extends State<QTInfoPage> {
     this.initializePlayer();
     _showDefaultFloatActionButtons();
 
-    titleFontSize = 20;
-    subtitleFontSize = 14;
+    titleFontSize = 18;
+    subtitleFontSize = 13;
     contentFontSize = 14;
 
 
