@@ -41,9 +41,8 @@ Future<String> signInWithGoogle() async {
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);
 
-    print('signInWithGoogle succeeded: $user');
-    print('>> email: ${currentUser.email}, uid:${currentUser.uid}');
     await _loadUserInformation(currentUser.email, currentUser.uid);
+    await _loadWelcomeMessages(currentUser.uid);
 
     return '${user.uid}';
   }
@@ -54,6 +53,14 @@ Future<String> signInWithGoogle() async {
 Future<void> _loadUserInformation(String email, String uid) async{
 
   await UserService.onUserLogin(email, uid);
+
+
+}
+
+Future<void> _loadWelcomeMessages(String uid) async{
+
+  await Global.loadWelcomeMessages(uid);
+
 
 }
 

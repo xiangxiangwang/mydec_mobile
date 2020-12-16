@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     'sundayServiceLiveZoom': MessageLookupByLibrary.simpleMessage("参加ZOOM聚会"),
     'sundayServiceLiveYoutube': MessageLookupByLibrary.simpleMessage("观看Youtube直播"),
     "password" : MessageLookupByLibrary.simpleMessage("密码"),
+    "nextStep" : MessageLookupByLibrary.simpleMessage("下一步"),
 
 
     'greetingMessage':greetingMessage,

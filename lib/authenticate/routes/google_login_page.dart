@@ -139,7 +139,14 @@ class _GoogleLoginPageState extends State<GoogleLoginPage> {
       signInWithGoogle().then((result) {
         if (result != null) {
           _postActionAfterLogin(result);
-          Navigator.of(context).pushNamed("home");
+          if (Global.getUserWelcomeMessage().length > 0) {
+            Navigator.of(context).pushNamed("welcome");
+
+          }
+          else {
+            Navigator.of(context).pushNamed("home");
+
+          }
         }
       })
     };

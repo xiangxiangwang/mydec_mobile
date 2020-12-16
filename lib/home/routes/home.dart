@@ -11,7 +11,7 @@ import 'package:mydec/common/models/menu.dart';
 import 'package:mydec/i10n/localization_intl.dart';
 import 'package:mydec/zoom/meeting_screen.dart';
 
-import '../common/web_view_page.dart';
+import '../../common/web_view_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 

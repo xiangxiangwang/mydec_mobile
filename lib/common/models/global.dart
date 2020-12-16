@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mydec/account/models/user.dart';
 import 'package:mydec/common/models/profile.dart';
+import 'package:mydec/home/models/user_welcome_message.dart';
+import 'package:mydec/home/services/user_welcome_message.dart';
 import 'package:mydec/notification/models/dec_notification.dart';
 import 'package:mydec/notification/models/dec_user_notification.dart';
 import 'package:mydec/notification/services/notification_info.dart';
@@ -30,6 +32,8 @@ class Global {
   static bool _hasNotification = false;
 
   static EventBus eventBus = new EventBus();
+
+  static List<UserWelcomeMessage> _userWelcomeMessages = [];
 
 
   static Timer _repeatibleTimer;
@@ -90,6 +94,19 @@ class Global {
 
     });
 
+  }
+
+  static void setUserWelcomeMessage(List<UserWelcomeMessage> userWelcomeMessages) {
+    _userWelcomeMessages = userWelcomeMessages;
+  }
+
+  static List<UserWelcomeMessage> getUserWelcomeMessage() {
+    return _userWelcomeMessages;
+  }
+
+  static Future<void> loadWelcomeMessages(String uid) async{
+    List<UserWelcomeMessage> userWelcomeMessages = await UserWelcomeMessageService.getNonReadWelcomeMessages(uid);
+    setUserWelcomeMessage(userWelcomeMessages);
   }
 
   static Future onSelectNotification(String payload) {

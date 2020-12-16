@@ -81,5 +81,6 @@ class UserService {
         Global.setCurrentUser(user);
 
       }
+
   }
 }

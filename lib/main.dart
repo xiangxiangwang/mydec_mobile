@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mydec/home/routes/welcome.dart';
 import 'package:mydec/page_404.dart';
 import 'package:mydec/qt/routes/qt_list.dart';
 import 'package:mydec/states/profile_change_notifier.dart';
@@ -17,7 +18,7 @@ import 'common/models/global.dart';
 import 'common/routes/language.dart';
 import 'authenticate/routes/google_login_page.dart';
 import 'common/web_view_page.dart';
-import 'home/home.dart';
+import 'home/routes/home.dart';
 import 'i10n/localization_intl.dart';
 import 'notification/routes/notification.dart';
 import 'notification/routes/notification_list.dart';
@@ -89,6 +90,7 @@ class MyApp extends StatelessWidget {
               // "/":(context) => GoogleLoginPage(), //注册首页路由
               "login_page":(context) => GoogleLoginPage(),
               "home":(context) => HomePage(),
+              "welcome":(context) => WelcomePage(),
               "web_view_page":(context) => WebViewPage(),
               "sunday_service":(context) => SundayServicePage(),
               "sunday_service_live":(context) => SundayServiceLivePage(),

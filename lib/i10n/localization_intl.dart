@@ -102,6 +102,8 @@ class DecLocalizations {
   String get sundayServiceLiveYoutube => Intl.message('Youtube Live', name: 'sundayServiceLiveYoutube');
   String get password => Intl.message('Password', name: 'password');
 
+  String get nextStep => Intl.message('Next Step', name: 'nextStep');
+
   String greetingMessage(Object name) {
     return Intl.message(
       'Hi $name, Jesus Loves You',
