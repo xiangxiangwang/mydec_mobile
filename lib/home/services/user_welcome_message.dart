@@ -30,9 +30,7 @@ class UserWelcomeMessageService {
 
   static Future<void> markUserWelcomeMessagesAsRead(String uid, List<UserWelcomeMessage> userWelcomeMessages) async {
 
-    print("markUserWelcomeMessagesAsRead: $uid / ${userWelcomeMessages.length}");
     userWelcomeMessages.forEach((userWelcomeMessage) async {
-      print("markUserWelcomeMessageAsRead: $uid / ${userWelcomeMessage.toJson()}");
       await markUserWelcomeMessageAsRead(uid, userWelcomeMessage);
     });
 
@@ -47,9 +45,10 @@ class UserWelcomeMessageService {
         .child("user_welcome_messages")
         .child(uid)
         .orderByChild("readFlag")
-        .equalTo("false")
+        .equalTo(false)
         .once();
 
+    print("getNonReadWelcomeMessages: ${snapshot.value}");
     if(snapshot.value != null) {
             // There should be only one notification item
             Map<String, Map<dynamic, dynamic>> userWelcomeMessageItems = new Map<String, Map<dynamic, dynamic>>.from(snapshot.value);
