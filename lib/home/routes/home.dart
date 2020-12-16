@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 3,
-            childAspectRatio: 1.0,
+            childAspectRatio: 1.2,
             padding: EdgeInsets.zero,
             children: _getTiles(_menuList),
           ),
