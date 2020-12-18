@@ -155,7 +155,9 @@ class _QTInfoPageState extends State<QTInfoPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(widget.qtInfo.title,
-          style:TextStyle(fontSize: titleFontSize ,fontWeight: FontWeight.bold)), //QT title bold
+              style:TextStyle(fontSize: titleFontSize ,fontWeight: FontWeight.bold)), //QT title bold
+          Text(widget.qtInfo.subtitle,
+              style:TextStyle(fontSize: titleFontSize ,fontWeight: FontWeight.bold)), //QT ti
           Text(
               widget.qtInfo.date,
               style: TextStyle(fontSize: subtitleFontSize)// QT date
